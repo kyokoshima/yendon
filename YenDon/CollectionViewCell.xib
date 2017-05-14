@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZUM-dq-9mT" customClass="CollectionViewCell" customModule="YenDon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="260"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MNJ-JZ-hvD" userLabel="image">
+                    <rect key="frame" x="0.0" y="0.0" width="422" height="260"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMa-HH-xma" userLabel="rate">
+                    <rect key="frame" x="70" y="50" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Jd-9r-Tnt" userLabel="indicator">
+                    <rect key="frame" x="151" y="50" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aaaaa" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jGo-vR-sdd" userLabel="amount">
+                    <rect key="frame" x="42" y="115" width="338" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="MNJ-JZ-hvD" firstAttribute="height" secondItem="ZUM-dq-9mT" secondAttribute="height" id="4b2-ZF-hHG"/>
+                <constraint firstItem="jGo-vR-sdd" firstAttribute="centerY" secondItem="ZUM-dq-9mT" secondAttribute="centerY" id="NBy-JK-LFA"/>
+                <constraint firstItem="jGo-vR-sdd" firstAttribute="centerX" secondItem="ZUM-dq-9mT" secondAttribute="centerX" id="QKr-jV-XaI"/>
+                <constraint firstItem="MNJ-JZ-hvD" firstAttribute="centerY" secondItem="ZUM-dq-9mT" secondAttribute="centerY" id="QpV-gO-1za"/>
+                <constraint firstItem="MNJ-JZ-hvD" firstAttribute="centerX" secondItem="ZUM-dq-9mT" secondAttribute="centerX" id="gTW-kI-K8G"/>
+                <constraint firstItem="jGo-vR-sdd" firstAttribute="width" secondItem="ZUM-dq-9mT" secondAttribute="width" multiplier="0.8" id="n4e-dE-vsU"/>
+                <constraint firstItem="MNJ-JZ-hvD" firstAttribute="width" secondItem="ZUM-dq-9mT" secondAttribute="width" id="usy-DB-lnF"/>
+            </constraints>
+            <connections>
+                <outlet property="image" destination="MNJ-JZ-hvD" id="KpN-IL-MhQ"/>
+                <outlet property="ind" destination="3Jd-9r-Tnt" id="XpO-1q-yRI"/>
+                <outlet property="labelRate" destination="lMa-HH-xma" id="TCk-aq-9UE"/>
+                <outlet property="textAmount" destination="jGo-vR-sdd" id="S5n-Jc-BQ2"/>
+            </connections>
+            <point key="canvasLocation" x="56" y="148"/>
+        </collectionReusableView>
+    </objects>
+</document>
