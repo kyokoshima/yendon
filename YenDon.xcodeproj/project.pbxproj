@@ -14,6 +14,8 @@
 		963AA0C91EC7017A00B2D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0C71EC7017A00B2D2B5 /* LaunchScreen.storyboard */; };
 		963AA0D41EC7017A00B2D2B5 /* YenDonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0D31EC7017A00B2D2B5 /* YenDonTests.swift */; };
 		963AA0DF1EC7017A00B2D2B5 /* YenDonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */; };
+		963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */; };
+		963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		963AA0DA1EC7017A00B2D2B5 /* YenDonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YenDonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YenDonUITests.swift; sourceTree = "<group>"; };
 		963AA0E01EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		963AA0F11EC714A000B2D2B5 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +101,9 @@
 		963AA0BD1EC7017A00B2D2B5 /* YenDon */ = {
 			isa = PBXGroup;
 			children = (
+				963AA0EE1EC70F4200B2D2B5 /* view */,
 				963AA0BE1EC7017A00B2D2B5 /* AppDelegate.swift */,
-				963AA0C01EC7017A00B2D2B5 /* ViewController.swift */,
-				963AA0C21EC7017A00B2D2B5 /* Main.storyboard */,
 				963AA0C51EC7017A00B2D2B5 /* Assets.xcassets */,
-				963AA0C71EC7017A00B2D2B5 /* LaunchScreen.storyboard */,
 				963AA0CA1EC7017A00B2D2B5 /* Info.plist */,
 			);
 			path = YenDon;
@@ -123,6 +125,18 @@
 				963AA0E01EC7017A00B2D2B5 /* Info.plist */,
 			);
 			path = YenDonUITests;
+			sourceTree = "<group>";
+		};
+		963AA0EE1EC70F4200B2D2B5 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				963AA0C71EC7017A00B2D2B5 /* LaunchScreen.storyboard */,
+				963AA0C21EC7017A00B2D2B5 /* Main.storyboard */,
+				963AA0C01EC7017A00B2D2B5 /* ViewController.swift */,
+				963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */,
+				963AA0F11EC714A000B2D2B5 /* CollectionView.swift */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +251,7 @@
 			files = (
 				963AA0C91EC7017A00B2D2B5 /* LaunchScreen.storyboard in Resources */,
 				963AA0C61EC7017A00B2D2B5 /* Assets.xcassets in Resources */,
+				963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */,
 				963AA0C41EC7017A00B2D2B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */,
 				963AA0C11EC7017A00B2D2B5 /* ViewController.swift in Sources */,
 				963AA0BF1EC7017A00B2D2B5 /* AppDelegate.swift in Sources */,
 			);
@@ -512,6 +528,7 @@
 				963AA0E51EC7017A00B2D2B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		963AA0E61EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +537,7 @@
 				963AA0E81EC7017A00B2D2B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		963AA0E91EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +546,7 @@
 				963AA0EB1EC7017A00B2D2B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
