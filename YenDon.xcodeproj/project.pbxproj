@@ -16,6 +16,11 @@
 		963AA0DF1EC7017A00B2D2B5 /* YenDonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */; };
 		963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */; };
 		963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionView.swift */; };
+		9679B6EA1ED1A410000FF0FC /* Realm.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
+		9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
+		9679B6EE1ED1A5D9000FF0FC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD8D6E1ED1B2BB006979FE /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,10 @@
 		963AA0E01EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		963AA0F11EC714A000B2D2B5 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		9679B6E71ED1A33D000FF0FC /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
+		9679B6E91ED1A410000FF0FC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		96FD8D6E1ED1B2BB006979FE /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */,
+				9679B6EE1ED1A5D9000FF0FC /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +92,13 @@
 		963AA0B21EC7017A00B2D2B5 = {
 			isa = PBXGroup;
 			children = (
+				9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */,
+				9679B6E91ED1A410000FF0FC /* Realm.framework */,
 				963AA0BD1EC7017A00B2D2B5 /* YenDon */,
 				963AA0D21EC7017A00B2D2B5 /* YenDonTests */,
 				963AA0DD1EC7017A00B2D2B5 /* YenDonUITests */,
 				963AA0BC1EC7017A00B2D2B5 /* Products */,
+				9679B6E61ED1A338000FF0FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +115,7 @@
 		963AA0BD1EC7017A00B2D2B5 /* YenDon */ = {
 			isa = PBXGroup;
 			children = (
+				96FD8D6D1ED1B29A006979FE /* model */,
 				963AA0EE1EC70F4200B2D2B5 /* view */,
 				963AA0BE1EC7017A00B2D2B5 /* AppDelegate.swift */,
 				963AA0C51EC7017A00B2D2B5 /* Assets.xcassets */,
@@ -139,6 +154,22 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		9679B6E61ED1A338000FF0FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9679B6E71ED1A33D000FF0FC /* Build */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96FD8D6D1ED1B29A006979FE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				96FD8D6E1ED1B2BB006979FE /* Country.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +180,7 @@
 				963AA0B71EC7017A00B2D2B5 /* Sources */,
 				963AA0B81EC7017A00B2D2B5 /* Frameworks */,
 				963AA0B91EC7017A00B2D2B5 /* Resources */,
+				9679B6F01ED1A6B3000FF0FC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,10 +281,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */,
 				963AA0C91EC7017A00B2D2B5 /* LaunchScreen.storyboard in Resources */,
 				963AA0C61EC7017A00B2D2B5 /* Assets.xcassets in Resources */,
 				963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */,
 				963AA0C41EC7017A00B2D2B5 /* Main.storyboard in Resources */,
+				9679B6EA1ED1A410000FF0FC /* Realm.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,11 +306,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9679B6F01ED1A6B3000FF0FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		963AA0B71EC7017A00B2D2B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */,
 				963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */,
 				963AA0C11EC7017A00B2D2B5 /* ViewController.swift in Sources */,
 				963AA0BF1EC7017A00B2D2B5 /* AppDelegate.swift in Sources */,
@@ -430,6 +483,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DNGT8A5Y29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YenDon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDon;
@@ -443,6 +500,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DNGT8A5Y29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YenDon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDon;

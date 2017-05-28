@@ -13,4 +13,5 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ind: UIActivityIndicatorView!
     @IBOutlet weak var textAmount: UITextField!
     @IBOutlet weak var image: UIImageView!
+    
 }
