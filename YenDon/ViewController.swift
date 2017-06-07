@@ -29,6 +29,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         localCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         localPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
         overseaPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
+        overseaPanReconizer.cancelsTouchesInView = false
 
     }
 
@@ -62,9 +63,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.contentView.isUserInteractionEnabled = false
         cell.textAmount.addGestureRecognizer(panReconizer!)
         cell.textAmount.delegate = self
+        if (cell.textAmount.text?.isEmpty)! {
+            cell.textAmount.text = "0"
+        }
+//        print("セル表示中〜　\(cell)")
+        if lastSelectedCell == nil {
+            lastSelectedCell = cell
+        }
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("willセル\(cell.tag)")
+    }
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("didセル\(cell.tag) last\(lastSelectedCell?.tag)")
+        swapReconizer(cell: cell as! CollectionViewCell)
+
+    }
     // FlowLayoutの
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize: CGFloat = self.view.frame.size.width
@@ -96,19 +112,94 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //    var lastSelectedCellIndex:Int = 0
     var lastSelectedCell:CollectionViewCell?
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView != lastSelectedCell?.superview {
+       
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    //
+    func handlePan( reconizer: UIPanGestureRecognizer) {
+        let point = reconizer.translation(in: self.view)
+        print(point)
+        if let tf:UITextField = reconizer.view as? UITextField {
+            
+            let amount = calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
+            syncAmount(amount: amount)
+//            tf.text = amount
+//            var otherTF:UITextField?
+//            var otherCell:CollectionViewCell?
+//            if tf.superview?.superview == overseasCollectionView {
+//                print("Overseas")
+//                otherCell = localCollectionView.visibleCells[0] as! CollectionViewCell
+//                otherTF = otherCell?.textAmount
+//            } else {
+//                print("local")
+//                otherCell = overseasCollectionView.visibleCells[0] as! CollectionViewCell
+//                otherTF = otherCell?.textAmount
+//            }
+//            otherTF?.text = amount
+        }
+    }
+    
+    private func syncAmount(amount: String) {
+        let tf1:UITextField = (overseasCollectionView.visibleCells[0] as! CollectionViewCell).textAmount
+        let tf2:UITextField = (localCollectionView.visibleCells[0] as! CollectionViewCell).textAmount
+        tf1.text = amount
+        tf2.text = amount
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+    
+    private func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
+        let distance = abs(moveLength)
+        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
+        var addValue:Double = moveLength
+        if distance < 10 && distance > 0 {
+            addValue = 10
+        } else if distance < 100 && distance > 10 {
+            addValue = 100
+        } else if distance < 1000 && distance > 100 {
+            addValue = 1000
+        } else if distance < 10000 && distance > 1000 {
+            addValue = 10000
+        }
+        if !plus {
+            addValue = -addValue
+        }
+        let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        let value = currentValue.adding(NSDecimalNumber(value: addValue), withBehavior: handler)
+        
+        
+        return value
+        
+    }
+    
+    private func swapReconizer(cell: CollectionViewCell) {
+        if cell.superview != lastSelectedCell?.superview {
             return
         }
-        let v:UICollectionView = scrollView as! UICollectionView
+        
+        let v:UICollectionView = cell.superview as! UICollectionView
         let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
+        
+        // if selected same as before, nothing to do
+        print("\(c.tag), \(lastSelectedCell?.tag)")
+        if c == lastSelectedCell {
+            return
+        }
+        
         var panReconizer:UIPanGestureRecognizer?
-        if scrollView == overseasCollectionView {
+        if v == overseasCollectionView {
             panReconizer = self.overseaPanReconizer
         } else {
             panReconizer = localPanReconizer
         }
         
-    
+        
         print("end decelerating", c.tag)
         if lastSelectedCell != c {
             c.textAmount.delegate = self
@@ -116,19 +207,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             lastSelectedCell?.textAmount.removeGestureRecognizer(panReconizer!)
         }
         lastSelectedCell = c
-    }
-    
-    //
-    func handlePan( reconizer: UIPanGestureRecognizer) {
-        let point = reconizer.translation(in: self.view)
-        print(point)
-        if let tf:UITextField = reconizer.view as? UITextField {
-            tf.text = point.y.description
-        }
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return false
     }
 }
 
