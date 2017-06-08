@@ -121,7 +121,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //
     func handlePan( reconizer: UIPanGestureRecognizer) {
         let point = reconizer.translation(in: self.view)
-        print(point)
+//        print(point.y)
+        let velocity = reconizer.velocity(in: self.view)
+//        print(velocity)
+        
         if let tf:UITextField = reconizer.view as? UITextField {
             
             let amount = calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
@@ -157,24 +160,48 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
         let distance = abs(moveLength)
         let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
-        var addValue:Double = moveLength
-        if distance < 10 && distance > 0 {
-            addValue = 10
-        } else if distance < 100 && distance > 10 {
-            addValue = 100
-        } else if distance < 1000 && distance > 100 {
-            addValue = 1000
-        } else if distance < 10000 && distance > 1000 {
-            addValue = 10000
-        }
+        var addValue:Double = Double(calcAddValue(source: Int(moveLength)))
+        
+//        if distance < 10 && distance > 0 {
+//            addValue = 10
+//        } else if distance < 100 && distance > 10 {
+//            addValue = 100
+//        } else if distance < 1000 && distance > 100 {
+//            addValue = 1000
+//        } else if distance < 10000 && distance > 1000 {
+//            addValue = 10000
+//        }
+        var sourceValue = currentValue
         if !plus {
             addValue = -addValue
         }
+        print(currentValue, addValue)
+        let willValue = currentValue.adding(NSDecimalNumber(value: addValue))
+        print(Utils.wellNumber(value: willValue))
+        if Utils.length(value: currentValue) > Utils.length(value: willValue) {
+            sourceValue = NSDecimalNumber(value: Utils.wellNumber(value: currentValue))
+        }
         let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-        let value = currentValue.adding(NSDecimalNumber(value: addValue), withBehavior: handler)
-        
+        let value = sourceValue.adding(NSDecimalNumber(value: addValue), withBehavior: handler)
         
         return value
+        
+    }
+    
+    private func calcAddValue(source:Int) -> Int {
+//        var result = source;
+
+        let source = source == 0 ? 1 : source
+        var length = abs(source / 50)
+        if length == 0 {
+            length = 1
+        }
+        let base = 10
+        var result = NSDecimalNumber(decimal: pow(Decimal(base), length)).intValue
+        if abs(result) > 100000  {
+            result = 100000
+        }
+        return result
         
     }
     
@@ -187,7 +214,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
         
         // if selected same as before, nothing to do
-        print("\(c.tag), \(lastSelectedCell?.tag)")
+//        print("\(c.tag), \(lastSelectedCell?.tag)")
         if c == lastSelectedCell {
             return
         }

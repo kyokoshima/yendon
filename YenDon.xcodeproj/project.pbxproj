@@ -16,6 +16,7 @@
 		963AA0DF1EC7017A00B2D2B5 /* YenDonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */; };
 		963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */; };
 		963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionView.swift */; };
+		9641E7A11EE99DCC0004333D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9641E7A01EE99DCC0004333D /* Utils.swift */; };
 		9679B6EA1ED1A410000FF0FC /* Realm.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
 		9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
 		9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
@@ -56,6 +57,7 @@
 		963AA0E01EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		963AA0F11EC714A000B2D2B5 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		9641E7A01EE99DCC0004333D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../Utils.swift; sourceTree = "<group>"; };
 		9679B6E71ED1A33D000FF0FC /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
 		9679B6E91ED1A410000FF0FC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		963AA0BD1EC7017A00B2D2B5 /* YenDon */ = {
 			isa = PBXGroup;
 			children = (
+				9641E7A21EE9A10C0004333D /* utils */,
 				96FD8D6D1ED1B29A006979FE /* model */,
 				963AA0EE1EC70F4200B2D2B5 /* view */,
 				963AA0BE1EC7017A00B2D2B5 /* AppDelegate.swift */,
@@ -152,6 +155,14 @@
 				963AA0F11EC714A000B2D2B5 /* CollectionView.swift */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		9641E7A21EE9A10C0004333D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9641E7A01EE99DCC0004333D /* Utils.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 		9679B6E61ED1A338000FF0FC /* Frameworks */ = {
@@ -329,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9641E7A11EE99DCC0004333D /* Utils.swift in Sources */,
 				96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */,
 				963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */,
 				963AA0C11EC7017A00B2D2B5 /* ViewController.swift in Sources */,
