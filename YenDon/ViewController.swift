@@ -127,7 +127,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if let tf:UITextField = reconizer.view as? UITextField {
             
-            let amount = calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
+            let amount = Utils.calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
             syncAmount(amount: amount)
 //            tf.text = amount
 //            var otherTF:UITextField?
@@ -157,36 +157,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return false
     }
     
-    private func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
-        let distance = abs(moveLength)
-        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
-        var addValue:Double = Double(calcAddValue(source: Int(moveLength)))
-        
-//        if distance < 10 && distance > 0 {
-//            addValue = 10
-//        } else if distance < 100 && distance > 10 {
-//            addValue = 100
-//        } else if distance < 1000 && distance > 100 {
-//            addValue = 1000
-//        } else if distance < 10000 && distance > 1000 {
-//            addValue = 10000
-//        }
-        var sourceValue = currentValue
-        if !plus {
-            addValue = -addValue
-        }
-        print(currentValue, addValue)
-        let willValue = currentValue.adding(NSDecimalNumber(value: addValue))
-        print(Utils.wellNumber(value: willValue))
-        if Utils.length(value: currentValue) > Utils.length(value: willValue) {
-            sourceValue = NSDecimalNumber(value: Utils.wellNumber(value: currentValue))
-        }
-        let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-        let value = sourceValue.adding(NSDecimalNumber(value: addValue), withBehavior: handler)
-        
-        return value
-        
-    }
+    
     
     private func calcAddValue(source:Int) -> Int {
 //        var result = source;
