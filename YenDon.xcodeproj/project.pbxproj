@@ -21,6 +21,7 @@
 		9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
 		9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
 		9679B6EE1ED1A5D9000FF0FC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682B7731EF6BB4800F04EA8 /* Api.swift */; };
 		96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD8D6E1ED1B2BB006979FE /* Country.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		9679B6E71ED1A33D000FF0FC /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
 		9679B6E91ED1A410000FF0FC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		9682B7731EF6BB4800F04EA8 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		96FD8D6E1ED1B2BB006979FE /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				9641E7A01EE99DCC0004333D /* Utils.swift */,
+				9682B7731EF6BB4800F04EA8 /* Api.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */,
 				9641E7A11EE99DCC0004333D /* Utils.swift in Sources */,
 				96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */,
 				963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */,

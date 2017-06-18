@@ -159,22 +159,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
     
-    private func calcAddValue(source:Int) -> Int {
-//        var result = source;
 
-        let source = source == 0 ? 1 : source
-        var length = abs(source / 50)
-        if length == 0 {
-            length = 1
-        }
-        let base = 10
-        var result = NSDecimalNumber(decimal: pow(Decimal(base), length)).intValue
-        if abs(result) > 100000  {
-            result = 100000
-        }
-        return result
-        
-    }
     
     private func swapReconizer(cell: CollectionViewCell) {
         if cell.superview != lastSelectedCell?.superview {

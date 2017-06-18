@@ -26,70 +26,70 @@ class Utils {
         tmp = tmp.substring(to: tmp.index(tmp.startIndex, offsetBy: length))
         return NSDecimalNumber(value: Int(tmp)!)
     }
+    
+    
     static func wellNumber(value:NSDecimalNumber) -> NSDecimalNumber {
-        let length = self.length(value: value) - 1
-        return wellNumber(length: length)
+//        let length = self.length(value: value) - 1
+//        return wellNumber(length: length)
+        let stringValue = value.stringValue
+        let firstDigit = stringValue.substring(to: stringValue.index(after: stringValue.startIndex))
+        let willLength = length(value: value) - 1
+        let willString = "\(firstDigit)" + String(repeating: "0", count: willLength)
+        return NSDecimalNumber(string: willString)
     }
     
     static func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
-        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
+//        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
+        print(Int(moveLength))
         
-        if currentValue.compare(NSDecimalNumber.zero) == ComparisonResult.orderedSame && !plus {
+        if currentValue.compare(NSDecimalNumber.zero) == .orderedAscending {
             return NSDecimalNumber.zero
         }
-        
-        
-        var addValue:NSDecimalNumber = NSDecimalNumber(value:calcAddValue(source: Int(moveLength)))
-        
-        
-        var sourceValue = currentValue
-        
-        
-        
-        
-        let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-        
-        // 値増減した後の値を検証
+    
+        let addValue = calcAddValue(source: Int(moveLength), currentValue: currentValue)
         let willValue = currentValue.adding(addValue)
-        let compared = willValue.compare(NSDecimalNumber.zero)
-        if compared == ComparisonResult.orderedAscending || compared == ComparisonResult.orderedSame {
-            return NSDecimalNumber.zero
-        }
-        let wellValue = Utils.wellNumber(value: willValue)
-        let currentLength = Utils.length(value: currentValue)
-        let willLength = Utils.length(value: willValue)
-        if currentLength == 1 {
-            // 0の場合
-            sourceValue = wellValue
-            addValue = Utils.wellNumber(length: 2)
-            print("c == 0 will\(willValue) current:\(currentValue) add\(addValue)")
-            
-        } else if currentLength > willLength {
-            sourceValue = wellValue
-            print("c > w will\(willValue) current:\(currentValue) add\(addValue)")
-            
-            addValue = Utils.wellNumber(length: willLength)
-        } else if currentLength < willLength {
-            sourceValue = wellValue
-            addValue = Utils.wellNumber(length: willLength)
-            print("c < w will\(willValue) current:\(currentValue) add\(addValue)")
-            
+        var calclatedValue:NSDecimalNumber = currentValue
+        if length(value: willValue) != length(value: currentValue) {
+            calclatedValue = wellNumber(value: willValue)
         } else {
-            // addValueの値を今の桁数にする
-            let addLength = Utils.length(value: addValue)
-            addValue = Utils.wellNumber(length: addLength)
-            print("will\(willValue) current:\(currentValue) add\(addValue)")
-            
+            calclatedValue = currentValue
         }
-        //        if !plus {
-        //            addValue = addValue.multiplying(by: NSDecimalNumber(value: -1))
-        //        }
-        //
-        print("will\(willValue) current:\(currentValue) add\(addValue)")
         
-        let value = sourceValue.adding(addValue, withBehavior: handler)
+        let value = calclatedValue.adding(addValue)
+
         
         return value
+        
+    }
+    
+    private static func calcAddValue(source: Int, currentValue: NSDecimalNumber) -> NSDecimalNumber {
+        print(abs(source) / 10)
+        if abs(source) / 10 < 1 { return NSDecimalNumber.zero }
+        let plus = source < 0 // マイナスならプラス、プラスならマイナス
+        let currentLength = length(value: currentValue)
+        var result: NSDecimalNumber?
+        if plus {
+            result = wellNumber(length: currentLength)
+        } else {
+            result = wellNumber(length: currentLength).multiplying(by: NSDecimalNumber(value: -1))
+        }
+        return result!
+    }
+    
+    private static func calcAddValue(source:Int) -> Int {
+        //        var result = source;
+        
+        let source = source == 0 ? 1 : source
+        var length = abs(source / 50)
+        if length == 0 {
+            length = 1
+        }
+        let base = 10
+        var result = NSDecimalNumber(decimal: pow(Decimal(base), length)).intValue
+        if abs(result) > 100000  {
+            result = 100000
+        }
+        return result
         
     }
 }
