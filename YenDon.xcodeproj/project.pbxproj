@@ -12,7 +12,6 @@
 		963AA0C41EC7017A00B2D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0C21EC7017A00B2D2B5 /* Main.storyboard */; };
 		963AA0C61EC7017A00B2D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0C51EC7017A00B2D2B5 /* Assets.xcassets */; };
 		963AA0C91EC7017A00B2D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0C71EC7017A00B2D2B5 /* LaunchScreen.storyboard */; };
-		963AA0D41EC7017A00B2D2B5 /* YenDonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0D31EC7017A00B2D2B5 /* YenDonTests.swift */; };
 		963AA0DF1EC7017A00B2D2B5 /* YenDonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */; };
 		963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */; };
 		963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionView.swift */; };
@@ -26,18 +25,28 @@
 		96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
 		96D7BFD71EF8178D00F0E6F1 /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
 		96D7BFD81EF8178D00F0E6F1 /* Alamofire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */; };
+		96D7BFE01EF94FB700F0E6F1 /* YenDonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D7BFDF1EF94FB700F0E6F1 /* YenDonTests.swift */; };
+		96D7BFE71EF951AC00F0E6F1 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682B7731EF6BB4800F04EA8 /* Api.swift */; };
+		96D7BFE81EF9578B00F0E6F1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
+		96D7BFE91EF9578B00F0E6F1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		96D7BFEA1EF9578B00F0E6F1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
+		96D7BFED1EF957B500F0E6F1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */; };
+		96D7BFEF1EF958F000F0E6F1 /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		96D7BFF01EF958F000F0E6F1 /* Realm.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
+		96D7BFF11EF958F000F0E6F1 /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
+		96D7BFF21EF958F000F0E6F1 /* Alamofire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */; };
 		96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD8D6E1ED1B2BB006979FE /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		963AA0D01EC7017A00B2D2B5 /* PBXContainerItemProxy */ = {
+		963AA0DB1EC7017A00B2D2B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 963AA0B31EC7017A00B2D2B5 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 963AA0BA1EC7017A00B2D2B5;
 			remoteInfo = YenDon;
 		};
-		963AA0DB1EC7017A00B2D2B5 /* PBXContainerItemProxy */ = {
+		96D7BFE21EF94FB700F0E6F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 963AA0B31EC7017A00B2D2B5 /* Project object */;
 			proxyType = 1;
@@ -54,9 +63,6 @@
 		963AA0C51EC7017A00B2D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963AA0C81EC7017A00B2D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963AA0CA1EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		963AA0CF1EC7017A00B2D2B5 /* YenDonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YenDonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		963AA0D31EC7017A00B2D2B5 /* YenDonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YenDonTests.swift; sourceTree = "<group>"; };
-		963AA0D51EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963AA0DA1EC7017A00B2D2B5 /* YenDonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YenDonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YenDonUITests.swift; sourceTree = "<group>"; };
 		963AA0E01EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +75,10 @@
 		9682B7731EF6BB4800F04EA8 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		96D7BFDD1EF94FB700F0E6F1 /* YenDonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YenDonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		96D7BFDF1EF94FB700F0E6F1 /* YenDonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YenDonTests.swift; sourceTree = "<group>"; };
+		96D7BFE11EF94FB700F0E6F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96D7BFEB1EF9578B00F0E6F1 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		96FD8D6E1ED1B2BB006979FE /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,17 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */,
 				96D7BFD41EF8175E00F0E6F1 /* Alamofire.framework in Frameworks */,
+				96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */,
 				9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */,
 				9679B6EE1ED1A5D9000FF0FC /* RealmSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		963AA0CC1EC7017A00B2D2B5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,17 +101,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96D7BFDA1EF94FB700F0E6F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96D7BFED1EF957B500F0E6F1 /* Alamofire.framework in Frameworks */,
+				96D7BFE81EF9578B00F0E6F1 /* Realm.framework in Frameworks */,
+				96D7BFE91EF9578B00F0E6F1 /* RealmSwift.framework in Frameworks */,
+				96D7BFEA1EF9578B00F0E6F1 /* SwiftyJSON.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		963AA0B21EC7017A00B2D2B5 = {
 			isa = PBXGroup;
 			children = (
-				9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */,
-				9679B6E91ED1A410000FF0FC /* Realm.framework */,
 				963AA0BD1EC7017A00B2D2B5 /* YenDon */,
-				963AA0D21EC7017A00B2D2B5 /* YenDonTests */,
 				963AA0DD1EC7017A00B2D2B5 /* YenDonUITests */,
+				96D7BFDE1EF94FB700F0E6F1 /* YenDonTests */,
 				963AA0BC1EC7017A00B2D2B5 /* Products */,
 				9679B6E61ED1A338000FF0FC /* Frameworks */,
 			);
@@ -118,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				963AA0BB1EC7017A00B2D2B5 /* YenDon.app */,
-				963AA0CF1EC7017A00B2D2B5 /* YenDonTests.xctest */,
 				963AA0DA1EC7017A00B2D2B5 /* YenDonUITests.xctest */,
+				96D7BFDD1EF94FB700F0E6F1 /* YenDonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,15 +147,6 @@
 				963AA0CA1EC7017A00B2D2B5 /* Info.plist */,
 			);
 			path = YenDon;
-			sourceTree = "<group>";
-		};
-		963AA0D21EC7017A00B2D2B5 /* YenDonTests */ = {
-			isa = PBXGroup;
-			children = (
-				963AA0D31EC7017A00B2D2B5 /* YenDonTests.swift */,
-				963AA0D51EC7017A00B2D2B5 /* Info.plist */,
-			);
-			path = YenDonTests;
 			sourceTree = "<group>";
 		};
 		963AA0DD1EC7017A00B2D2B5 /* YenDonUITests */ = {
@@ -179,11 +182,23 @@
 		9679B6E61ED1A338000FF0FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */,
+				9679B6E91ED1A410000FF0FC /* Realm.framework */,
+				96D7BFEB1EF9578B00F0E6F1 /* Alamofire.framework.dSYM */,
 				96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */,
 				96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */,
 				9679B6E71ED1A33D000FF0FC /* Build */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96D7BFDE1EF94FB700F0E6F1 /* YenDonTests */ = {
+			isa = PBXGroup;
+			children = (
+				96D7BFDF1EF94FB700F0E6F1 /* YenDonTests.swift */,
+				96D7BFE11EF94FB700F0E6F1 /* Info.plist */,
+			);
+			path = YenDonTests;
 			sourceTree = "<group>";
 		};
 		96FD8D6D1ED1B29A006979FE /* model */ = {
@@ -215,24 +230,6 @@
 			productReference = 963AA0BB1EC7017A00B2D2B5 /* YenDon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		963AA0CE1EC7017A00B2D2B5 /* YenDonTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 963AA0E61EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonTests" */;
-			buildPhases = (
-				963AA0CB1EC7017A00B2D2B5 /* Sources */,
-				963AA0CC1EC7017A00B2D2B5 /* Frameworks */,
-				963AA0CD1EC7017A00B2D2B5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				963AA0D11EC7017A00B2D2B5 /* PBXTargetDependency */,
-			);
-			name = YenDonTests;
-			productName = YenDonTests;
-			productReference = 963AA0CF1EC7017A00B2D2B5 /* YenDonTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		963AA0D91EC7017A00B2D2B5 /* YenDonUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963AA0E91EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonUITests" */;
@@ -251,13 +248,32 @@
 			productReference = 963AA0DA1EC7017A00B2D2B5 /* YenDonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		96D7BFDC1EF94FB700F0E6F1 /* YenDonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96D7BFE41EF94FB700F0E6F1 /* Build configuration list for PBXNativeTarget "YenDonTests" */;
+			buildPhases = (
+				96D7BFD91EF94FB700F0E6F1 /* Sources */,
+				96D7BFDA1EF94FB700F0E6F1 /* Frameworks */,
+				96D7BFDB1EF94FB700F0E6F1 /* Resources */,
+				96D7BFEE1EF9585B00F0E6F1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96D7BFE31EF94FB700F0E6F1 /* PBXTargetDependency */,
+			);
+			name = YenDonTests;
+			productName = YenDonTests;
+			productReference = 96D7BFDD1EF94FB700F0E6F1 /* YenDonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		963AA0B31EC7017A00B2D2B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = info.tmpla;
 				TargetAttributes = {
@@ -266,14 +282,14 @@
 						DevelopmentTeam = DNGT8A5Y29;
 						ProvisioningStyle = Automatic;
 					};
-					963AA0CE1EC7017A00B2D2B5 = {
+					963AA0D91EC7017A00B2D2B5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = DNGT8A5Y29;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 963AA0BA1EC7017A00B2D2B5;
 					};
-					963AA0D91EC7017A00B2D2B5 = {
-						CreatedOnToolsVersion = 8.2.1;
+					96D7BFDC1EF94FB700F0E6F1 = {
+						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DNGT8A5Y29;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 963AA0BA1EC7017A00B2D2B5;
@@ -294,7 +310,7 @@
 			projectRoot = "";
 			targets = (
 				963AA0BA1EC7017A00B2D2B5 /* YenDon */,
-				963AA0CE1EC7017A00B2D2B5 /* YenDonTests */,
+				96D7BFDC1EF94FB700F0E6F1 /* YenDonTests */,
 				963AA0D91EC7017A00B2D2B5 /* YenDonUITests */,
 			);
 		};
@@ -316,13 +332,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		963AA0CD1EC7017A00B2D2B5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		963AA0D81EC7017A00B2D2B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,10 +339,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96D7BFDB1EF94FB700F0E6F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96D7BFEF1EF958F000F0E6F1 /* RealmSwift.framework in Resources */,
+				96D7BFF01EF958F000F0E6F1 /* Realm.framework in Resources */,
+				96D7BFF11EF958F000F0E6F1 /* SwiftyJSON.framework in Resources */,
+				96D7BFF21EF958F000F0E6F1 /* Alamofire.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		9679B6F01ED1A6B3000FF0FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		96D7BFEE1EF9585B00F0E6F1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,14 +403,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		963AA0CB1EC7017A00B2D2B5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				963AA0D41EC7017A00B2D2B5 /* YenDonTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		963AA0D61EC7017A00B2D2B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,18 +411,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96D7BFD91EF94FB700F0E6F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96D7BFE71EF951AC00F0E6F1 /* Api.swift in Sources */,
+				96D7BFE01EF94FB700F0E6F1 /* YenDonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		963AA0D11EC7017A00B2D2B5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 963AA0BA1EC7017A00B2D2B5 /* YenDon */;
-			targetProxy = 963AA0D01EC7017A00B2D2B5 /* PBXContainerItemProxy */;
-		};
 		963AA0DC1EC7017A00B2D2B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 963AA0BA1EC7017A00B2D2B5 /* YenDon */;
 			targetProxy = 963AA0DB1EC7017A00B2D2B5 /* PBXContainerItemProxy */;
+		};
+		96D7BFE31EF94FB700F0E6F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 963AA0BA1EC7017A00B2D2B5 /* YenDon */;
+			targetProxy = 96D7BFE21EF94FB700F0E6F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,6 +482,7 @@
 				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -495,6 +534,8 @@
 				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -518,10 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DNGT8A5Y29;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YenDon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDon;
@@ -535,45 +573,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DNGT8A5Y29;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YenDon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		963AA0E71EC7017A00B2D2B5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = DNGT8A5Y29;
-				INFOPLIST_FILE = YenDonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDonTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YenDon.app/YenDon";
-			};
-			name = Debug;
-		};
-		963AA0E81EC7017A00B2D2B5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = DNGT8A5Y29;
-				INFOPLIST_FILE = YenDonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDonTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YenDon.app/YenDon";
 			};
 			name = Release;
 		};
@@ -605,6 +610,46 @@
 			};
 			name = Release;
 		};
+		96D7BFE51EF94FB700F0E6F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = DNGT8A5Y29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = YenDonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YenDon.app/YenDon";
+			};
+			name = Debug;
+		};
+		96D7BFE61EF94FB700F0E6F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = DNGT8A5Y29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = YenDonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = info.tmpla.YenDonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YenDon.app/YenDon";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -626,15 +671,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		963AA0E61EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				963AA0E71EC7017A00B2D2B5 /* Debug */,
-				963AA0E81EC7017A00B2D2B5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		963AA0E91EC7017A00B2D2B5 /* Build configuration list for PBXNativeTarget "YenDonUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -643,6 +679,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		96D7BFE41EF94FB700F0E6F1 /* Build configuration list for PBXNativeTarget "YenDonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96D7BFE51EF94FB700F0E6F1 /* Debug */,
+				96D7BFE61EF94FB700F0E6F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

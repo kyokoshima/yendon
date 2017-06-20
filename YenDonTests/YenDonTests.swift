@@ -2,7 +2,7 @@
 //  YenDonTests.swift
 //  YenDonTests
 //
-//  Created by 横島健一 on 2017/05/13.
+//  Created by 横島健一 on 2017/06/20.
 //  Copyright © 2017年 info.tmpla. All rights reserved.
 //
 
@@ -32,7 +32,14 @@ class YenDonTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
     func testApi() {
-        
+        let api = Api()
+        api.request(success: { (data: Dictionary<String, Any>) in
+            debugPrint(data)
+        }, fail: { (error: Error?) in
+            print(error)
+        })
     }
+    
 }
