@@ -34,12 +34,36 @@ class YenDonTests: XCTestCase {
     }
     
     func testApi() {
+        let ex = expectation(description: "Api")
         let api = Api()
         api.request(success: { (data: Dictionary<String, Any>) in
             debugPrint(data)
+            ex.fulfill()
+            XCTAssertTrue(data["error"] == nil)
+            
         }, fail: { (error: Error?) in
             print(error)
+            ex.fulfill()
         })
+        
+        waitForExpectations(timeout: 10, handler: nil)
+
+    }
+    
+    func testApiWithDupilicateKey(){
+        let ex = expectation(description: "Api")
+        let api = Api(pairs: ["JPYVND","JPYVND","USDVND"])
+        api.request(success: { (data: Dictionary<String, Any>) in
+            debugPrint(data)
+            ex.fulfill()
+            XCTAssertTrue(data["error"] == nil)
+            
+        }, fail: { (error: Error?) in
+            print(error)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

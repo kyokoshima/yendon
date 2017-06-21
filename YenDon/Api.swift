@@ -18,17 +18,19 @@ struct Api {
     let parameters: Parameters
     
     init( pairs: Array<String> = ["JPYVND"]) {
+        let pairs = Set(pairs)
         let pairsWithValue = pairs.map {
             return "\"\($0)\""
             }.joined(separator: ",")
         self.parameters = [ "format": "json",
-                            "store": "store://datatables.org/alltableswithkeys",
-                            "q": "select * from yahoo.finance.xchange where pair in \(pairsWithValue)"
+                            "env": "store://datatables.org/alltableswithkeys",
+                            "q": "select * from yahoo.finance.xchange where pair in (\(pairsWithValue))"
         ]
         
     }
     
     func request(success: @escaping(_ data: Dictionary<String, Any>) ->Void, fail: @escaping(_ error: Error?) -> Void) {
+        debugPrint(parameters)
         Alamofire.request(url, method: method, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 success(response.result.value as! Dictionary)
