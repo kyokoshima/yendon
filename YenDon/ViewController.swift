@@ -30,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         localPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
         overseaPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
         overseaPanReconizer.cancelsTouchesInView = false
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +74,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let api = Api()
+        let c:CollectionViewCell = cell as! CollectionViewCell
+        c.ind.startAnimating()
         print("willセル\(cell.tag)")
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -129,19 +132,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             let amount = Utils.calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
             syncAmount(amount: amount)
-//            tf.text = amount
-//            var otherTF:UITextField?
-//            var otherCell:CollectionViewCell?
-//            if tf.superview?.superview == overseasCollectionView {
-//                print("Overseas")
-//                otherCell = localCollectionView.visibleCells[0] as! CollectionViewCell
-//                otherTF = otherCell?.textAmount
-//            } else {
-//                print("local")
-//                otherCell = overseasCollectionView.visibleCells[0] as! CollectionViewCell
-//                otherTF = otherCell?.textAmount
-//            }
-//            otherTF?.text = amount
+
         }
     }
     

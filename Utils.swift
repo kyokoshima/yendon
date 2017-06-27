@@ -40,6 +40,9 @@ class Utils {
     
     static func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
 //        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
+        if (currentValue == NSDecimalNumber.zero && moveLength > 0) {
+            return NSDecimalNumber.zero
+        }
         print(Int(moveLength))
         
         if currentValue.compare(NSDecimalNumber.zero) == .orderedAscending {
