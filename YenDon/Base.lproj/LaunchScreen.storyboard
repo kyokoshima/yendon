@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="1242" height="2208"/>
+        <image name="splash" width="414" height="736"/>
     </resources>
 </document>
