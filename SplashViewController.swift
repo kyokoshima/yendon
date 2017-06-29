@@ -27,13 +27,22 @@ class SplashViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let ani:CABasicAnimation = CABasicAnimation(keyPath: "transform.rotarion")
-        ani.duration = 3.0
-        ani.toValue = M_PI / 2.0
-        ani.repeatCount = MAXFLOAT
+        CATransaction.begin()
+//
+        CATransaction.setCompletionBlock { () -> Void in
+            self.star.layer.removeAllAnimations()
+            self.goToMain()
+        }
+        
+        let ani:CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        ani.duration = 2.0
+        ani.fromValue = 0.0
+        ani.toValue = Double.pi * 5
+        ani.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         ani.isCumulative = true
-        star.layer.add(ani, forKey: "startRotation")
-        ani.fini
+        self.star.layer.add(ani, forKey: "startRotation")
+        CATransaction.commit()
+        
 
     }
 
