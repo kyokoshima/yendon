@@ -9,11 +9,11 @@
 import UIKit
 
 class SplashViewController: UIViewController {
+    @IBOutlet weak var star: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        goToMain()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,8 +22,19 @@ class SplashViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func goToMain() {
+    func goToMain() {
         performSegue(withIdentifier: "main", sender: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let ani:CABasicAnimation = CABasicAnimation(keyPath: "transform.rotarion")
+        ani.duration = 3.0
+        ani.toValue = M_PI / 2.0
+        ani.repeatCount = MAXFLOAT
+        ani.isCumulative = true
+        star.layer.add(ani, forKey: "startRotation")
+        ani.fini
+
     }
 
     /*

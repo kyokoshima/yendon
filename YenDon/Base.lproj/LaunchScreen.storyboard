@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +22,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="1tX-1N-VKD">
-                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CQh-3e-BKO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.85263043642044067" green="0.14551377296447754" blue="0.1148674413561821" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="qgG-l6-bGy">
+                                <rect key="frame" x="142.5" y="224" width="90" height="86"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="AGJ-gI-5r0">
+                                <rect key="frame" x="-0.5" y="299" width="375" height="69"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1tX-1N-VKD" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="4AF-62-dby"/>
-                            <constraint firstItem="1tX-1N-VKD" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="IY9-oF-dD1"/>
-                            <constraint firstItem="1tX-1N-VKD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="htE-XC-DhB"/>
-                            <constraint firstItem="1tX-1N-VKD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xGZ-to-ztD"/>
+                            <constraint firstItem="AGJ-gI-5r0" firstAttribute="centerX" secondItem="CQh-3e-BKO" secondAttribute="centerX" id="Aeb-zS-nBC"/>
+                            <constraint firstItem="qgG-l6-bGy" firstAttribute="centerX" secondItem="CQh-3e-BKO" secondAttribute="centerX" id="Ck6-qa-4nm"/>
+                            <constraint firstItem="CQh-3e-BKO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="LsW-vc-jF8"/>
+                            <constraint firstItem="AGJ-gI-5r0" firstAttribute="centerY" secondItem="CQh-3e-BKO" secondAttribute="centerY" id="ZBw-5v-EXL"/>
+                            <constraint firstItem="CQh-3e-BKO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aIW-t2-itq"/>
+                            <constraint firstItem="CQh-3e-BKO" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="k6w-7w-n2X"/>
+                            <constraint firstItem="qgG-l6-bGy" firstAttribute="centerY" secondItem="CQh-3e-BKO" secondAttribute="centerY" multiplier="0.8" id="tIO-xn-zi5"/>
+                            <constraint firstItem="CQh-3e-BKO" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="v1m-8H-bze"/>
+                            <constraint firstItem="AGJ-gI-5r0" firstAttribute="width" secondItem="CQh-3e-BKO" secondAttribute="width" id="vcG-Qi-a9w"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +53,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="414" height="736"/>
+        <image name="Logo" width="306" height="69"/>
+        <image name="Star" width="90" height="86"/>
     </resources>
 </document>
