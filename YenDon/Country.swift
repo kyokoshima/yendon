@@ -12,10 +12,10 @@ import RealmSwift
 class Country: Object {
     static let realm = try! Realm()
     
-    dynamic private var id = 0
     dynamic var name = "";
     dynamic private var _image: UIImage? = nil
     dynamic private var imageData: NSData? = nil
+    let rates = List<Rate>()
     dynamic var image: UIImage? {
         set{
             self._image = newValue
@@ -37,7 +37,7 @@ class Country: Object {
     }
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "name"
     }
     
     static func loadAll() -> [Country] {
@@ -49,16 +49,15 @@ class Country: Object {
         return ret
     }
     
-    static func create(id: Int, name: String, image:UIImage) -> Country {
+    static func create(_ name: String, image:UIImage) -> Country {
         let country = Country()
-        country.id = id
         country.image = image
         country.name = name
         return country
     }
     
-    static func find(id:Int) -> Country? {
-        if let country = realm.object(ofType: Country.self, forPrimaryKey: id) {
+    static func find(_ name:String) -> Country? {
+        if let country = realm.object(ofType: Country.self, forPrimaryKey: name) {
             return country
         }
         return nil
@@ -74,7 +73,7 @@ class Country: Object {
     
     func save() {
         try! Country.realm.write {
-            Country.realm.add(self)
+            Country.realm.add(self, update: true)
         }
     }
     

@@ -38,7 +38,7 @@ class Utils {
         return NSDecimalNumber(string: willString)
     }
     
-    static func calcAmount(currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
+    static func calcAmount(_ currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
 //        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
         if (currentValue == NSDecimalNumber.zero && moveLength > 0) {
             return NSDecimalNumber.zero

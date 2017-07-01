@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // migration
+        let config = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        //　初期データが有るかどうか検索
+        let realm = try! Realm()
+        let countries = realm.objects(Country.self).filter("name == %@", "VND")
+        if countries.count == 0 {
+            // なければ作成
+            let vnd = Country.create(Const.VND, image: #imageLiteral(resourceName: "Vietnam"))
+            let jpy = Country.create(Const.JPY, image: #imageLiteral(resourceName: "Japan"))
+            let usd = Country.create(Const.USD, image: #imageLiteral(resourceName: "United-States"))
+            let aud = Country.create(Const.AUD, image: #imageLiteral(resourceName: "Australia"))
+            
+            // 為替初期値
+            vnd.rates.append(Rate.create("JPY", amount: 0.004944))
+            vnd.rates.append(Rate.create("USD", amount: 0.0000439))
+            vnd.rates.append(Rate.create("AUD", amount: 0.0000572235))
+
+            vnd.save()
+            jpy.save()
+            usd.save()
+            aud.save()
+            
+        }
         return true
+    }
+    
+    private func createInitialCountry() {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -31,6 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateInitialViewController()
+        application.keyWindow?.rootViewController = vc
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -9,8 +9,16 @@
 import UIKit
 
 class SplashViewController: UIViewController {
+        @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var star: UIImageView!
 
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var logoCenterY: NSLayoutConstraint!
+    @IBOutlet weak var logoWidth: NSLayoutConstraint!
+
+    @IBOutlet weak var logoCenterX: NSLayoutConstraint!
+    @IBOutlet weak var starCenterY: NSLayoutConstraint!
+    @IBOutlet weak var starCenterX: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,24 +34,82 @@ class SplashViewController: UIViewController {
         performSegue(withIdentifier: "main", sender: nil)
     }
     
+
+
     override func viewDidAppear(_ animated: Bool) {
+        let duration = 1.0
         CATransaction.begin()
 //
         CATransaction.setCompletionBlock { () -> Void in
-            self.star.layer.removeAllAnimations()
-            self.goToMain()
+
+
+
         }
         
-        let ani:CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        ani.duration = 2.0
-        ani.fromValue = 0.0
-        ani.toValue = Double.pi * 5
-        ani.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        let ani:CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        ani.duration = 0.5
+//        ani.fromValue = 0.0
+        ani.toValue = Double.pi
+        ani.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         ani.isCumulative = true
+        ani.repeatCount = MAXFLOAT
         self.star.layer.add(ani, forKey: "startRotation")
         CATransaction.commit()
-        
+        let api = Api(pairs: ["JPYVND", "USDVND","AUDVND"])
+        api.request(success: { (response) in
+            //
+           
+            self.moveLogo()
+            self.moveStar()
+         
+            
+            UIView.animate(withDuration: duration, delay: 0.0,
+                           options: .curveEaseIn,
+                           animations: {
+                            self.star.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                            self.view.layoutIfNeeded()
+            }, completion: { (finished: Bool) in
+                //
+                self.star.layer.removeAllAnimations()
+                self.goToMain()
+            })
 
+
+        }) { (error) in
+            //
+        }
+
+
+    }
+    
+    private func moveLogo() {
+        // ロゴの移動
+        self.view.removeConstraints([self.logoCenterY, self.logoCenterX])
+        
+        self.view.addConstraints([
+            NSLayoutConstraint(
+                item: self.logo,
+                attribute: .centerY,
+                relatedBy: .equal,
+                toItem: self.view,
+                attribute: .centerY, multiplier: 0.25, constant: 0),
+            NSLayoutConstraint(item: self.logo, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.1, constant: 0)])
+        
+        self.view.removeConstraint(self.logoWidth)
+        self.logo.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+    }
+    
+    private func moveStar() {
+        // 星の移動
+        self.view.removeConstraints([self.starCenterY, self.starCenterX])
+        self.view.addConstraints([
+            NSLayoutConstraint(item: self.star, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 0.3, constant: 0)])
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.logo,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: self.star,
+            attribute: .centerY, multiplier: 1.05, constant: 0))
     }
 
     /*

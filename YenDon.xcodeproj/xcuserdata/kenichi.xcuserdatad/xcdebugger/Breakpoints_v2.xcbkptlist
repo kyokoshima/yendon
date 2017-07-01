@@ -13,22 +13,6 @@
             timestampString = "519921657.609444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "collectionView(_:didEndDisplaying:forItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203">
+            startingLineNumber = "210"
+            endingLineNumber = "210">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -120,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208">
+            startingLineNumber = "215"
+            endingLineNumber = "215">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -134,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921657.609444"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209">
+            startingLineNumber = "216"
+            endingLineNumber = "216">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -308,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "519921641.261542"
+            timestampString = "520616922.206174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "collectionView(_:willDisplay:forItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -324,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SplashViewController.swift"
-            timestampString = "520436357.749093"
+            timestampString = "520563215.834243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "goToMain()"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,12 +324,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SplashViewController.swift"
-            timestampString = "520470239.57531"
+            timestampString = "520565452.162116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SplashViewController.swift"
+            timestampString = "520586015.861482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YenDon.SplashViewController.viewDidAppear (Swift.Bool) -&gt; ()"
+                  moduleName = "YenDon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichi/Documents/ios/YenDon/SplashViewController.swift"
+                  timestampString = "520586059.904096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YenDon.SplashViewController.(viewDidAppear (Swift.Bool) -&gt; ()).(closure #1)"
+                  moduleName = "YenDon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichi/Documents/ios/YenDon/SplashViewController.swift"
+                  timestampString = "520586059.905347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YenDon/ViewController.swift"
+            timestampString = "520614763.833606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YenDon/ViewController.swift"
+            timestampString = "520617213.304455"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

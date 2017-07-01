@@ -13,10 +13,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     @IBOutlet weak var overseasCollectionView: UICollectionView!
     var overseaCountries:[Country] =
-        [Country.create(id:0, name:"JPY", image: #imageLiteral(resourceName: "Japan")),
-        Country.create(id: 1, name: "USD", image: #imageLiteral(resourceName: "United-States")),
-        Country.create(id: 2, name: "AUD", image: #imageLiteral(resourceName: "Australia"))]
-    var localCountries:[Country] = [Country.create(id:0, name:"VND", image: #imageLiteral(resourceName: "Vietnam"))]
+        [Country.find(Const.JPY)!,
+        Country.find(Const.USD)!,
+        Country.find(Const.AUD)!]
+    var localCountries:[Country] = [Country.find(Const.VND)!]
     var localPanReconizer: UIPanGestureRecognizer!
     var overseaPanReconizer: UIPanGestureRecognizer!
     
@@ -50,15 +50,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         var countries:[Country]?
         var panReconizer:UIPanGestureRecognizer?
+        var rateText: String?
         if collectionView == overseasCollectionView {
             countries = overseaCountries
             panReconizer = overseaPanReconizer
+            
+            
         } else {
             countries = localCountries
             panReconizer = localPanReconizer
         }
-        let image:UIImageView = cell.image
-        image.image = countries?[indexPath.row].image
+        let country = countries?[indexPath.row]
+        
+        cell.image = UIImageView(image: country?.image)
+        cell.labelRate.text = country?.rates.first?.amount.description
         cell.tag = indexPath.row
         cell.contentView.isUserInteractionEnabled = false
         cell.textAmount.addGestureRecognizer(panReconizer!)
@@ -122,15 +127,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     //
+    var lastPointY = 0.0
     func handlePan( reconizer: UIPanGestureRecognizer) {
         let point = reconizer.translation(in: self.view)
 //        print(point.y)
-        let velocity = reconizer.velocity(in: self.view)
+//        let velocity = reconizer.velocity(in: self.view)
 //        print(velocity)
-        
+        let distance = lastPointY - Double(point.y)
+        print(distance)
         if let tf:UITextField = reconizer.view as? UITextField {
             
-            let amount = Utils.calcAmount(currentValue: NSDecimalNumber(string: tf.text), moveLength: Double(point.y)).description
+            let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
             syncAmount(amount: amount)
 
         }

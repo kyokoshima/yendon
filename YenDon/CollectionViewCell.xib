@@ -16,13 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="422" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMa-HH-xma" userLabel="rate">
-                    <rect key="frame" x="70" y="50" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Jd-9r-Tnt" userLabel="indicator">
                     <rect key="frame" x="151" y="50" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,14 +29,23 @@
                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="60"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMa-HH-xma" userLabel="rate">
+                    <rect key="frame" x="21" y="15.5" width="211" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="MNJ-JZ-hvD" firstAttribute="height" secondItem="ZUM-dq-9mT" secondAttribute="height" id="4b2-ZF-hHG"/>
                 <constraint firstItem="jGo-vR-sdd" firstAttribute="centerY" secondItem="ZUM-dq-9mT" secondAttribute="centerY" id="NBy-JK-LFA"/>
+                <constraint firstItem="lMa-HH-xma" firstAttribute="centerX" secondItem="ZUM-dq-9mT" secondAttribute="centerX" multiplier="0.6" id="OHy-fn-7X6"/>
                 <constraint firstItem="jGo-vR-sdd" firstAttribute="centerX" secondItem="ZUM-dq-9mT" secondAttribute="centerX" id="QKr-jV-XaI"/>
                 <constraint firstItem="MNJ-JZ-hvD" firstAttribute="centerY" secondItem="ZUM-dq-9mT" secondAttribute="centerY" id="QpV-gO-1za"/>
                 <constraint firstItem="MNJ-JZ-hvD" firstAttribute="centerX" secondItem="ZUM-dq-9mT" secondAttribute="centerX" id="gTW-kI-K8G"/>
+                <constraint firstItem="lMa-HH-xma" firstAttribute="centerY" secondItem="ZUM-dq-9mT" secondAttribute="centerY" multiplier="0.2" id="mYU-Ll-aHY"/>
                 <constraint firstItem="jGo-vR-sdd" firstAttribute="width" secondItem="ZUM-dq-9mT" secondAttribute="width" multiplier="0.8" id="n4e-dE-vsU"/>
+                <constraint firstItem="lMa-HH-xma" firstAttribute="width" secondItem="ZUM-dq-9mT" secondAttribute="width" multiplier="0.5" id="tQ1-ZY-L9Z"/>
                 <constraint firstItem="MNJ-JZ-hvD" firstAttribute="width" secondItem="ZUM-dq-9mT" secondAttribute="width" id="usy-DB-lnF"/>
             </constraints>
             <connections>

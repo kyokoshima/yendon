@@ -13,7 +13,7 @@
         <!--Splash View Controller-->
         <scene sceneID="EIq-38-ccq">
             <objects>
-                <viewController id="8qo-DC-g2n" customClass="SplashViewController" customModule="YenDon" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Splash" id="8qo-DC-g2n" customClass="SplashViewController" customModule="YenDon" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dj1-G8-ybR"/>
                         <viewControllerLayoutGuide type="bottom" id="hPa-hM-Tbc"/>
@@ -22,25 +22,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-7w-B0e">
-                                <rect key="frame" x="0.0" y="298.5" width="375" height="69"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="4K9-8g-LiP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="4K9-8g-LiP">
                                 <rect key="frame" x="142" y="224" width="90" height="86"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-7w-B0e">
+                                <rect key="frame" x="0.0" y="299" width="375" height="69"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.85263043642044067" green="0.14551377296447754" blue="0.1148674413561821" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tc7-7w-B0e" firstAttribute="centerX" secondItem="qeY-5q-lZb" secondAttribute="centerX" id="1bD-IW-a7t"/>
+                            <constraint firstItem="tc7-7w-B0e" firstAttribute="centerY" secondItem="qeY-5q-lZb" secondAttribute="centerY" id="5fI-ti-rzS"/>
                             <constraint firstItem="4K9-8g-LiP" firstAttribute="centerY" secondItem="qeY-5q-lZb" secondAttribute="centerY" multiplier="0.8" id="S3K-TT-kg1"/>
-                            <constraint firstItem="tc7-7w-B0e" firstAttribute="centerY" secondItem="qeY-5q-lZb" secondAttribute="centerY" id="bba-Or-Pcm"/>
                             <constraint firstItem="tc7-7w-B0e" firstAttribute="width" secondItem="qeY-5q-lZb" secondAttribute="width" id="gc0-ld-nkp"/>
                             <constraint firstItem="4K9-8g-LiP" firstAttribute="centerX" secondItem="qeY-5q-lZb" secondAttribute="centerX" id="rI9-nc-DOx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logo" destination="tc7-7w-B0e" id="gBP-lL-FyH"/>
+                        <outlet property="logoCenterX" destination="1bD-IW-a7t" id="UST-qT-OFl"/>
+                        <outlet property="logoCenterY" destination="5fI-ti-rzS" id="jYY-8l-gZG"/>
+                        <outlet property="logoWidth" destination="gc0-ld-nkp" id="tUe-sY-s5M"/>
                         <outlet property="star" destination="4K9-8g-LiP" id="y7G-YO-wzt"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="main" id="gMD-qO-fPg"/>
+                        <outlet property="starCenterX" destination="rI9-nc-DOx" id="9G9-QI-P65"/>
+                        <outlet property="starCenterY" destination="S3K-TT-kg1" id="5C8-3f-T04"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="main" animates="NO" id="gMD-qO-fPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9b-ce-W6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,16 +134,31 @@
                                     <constraint firstItem="THa-sn-tVu" firstAttribute="width" secondItem="U11-5O-Lfp" secondAttribute="width" id="nWf-Ie-9eR"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-Ml-f2V">
+                                <rect key="frame" x="94.5" y="49" width="225" height="69"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="fyj-Gk-ghB">
+                                <rect key="frame" x="31.5" y="54.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Mct-Qc-AA9"/>
+                                    <constraint firstAttribute="height" constant="50" id="vKy-ha-wwt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="U11-5O-Lfp" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="EZ1-JN-snz"/>
                             <constraint firstItem="dA5-38-t3q" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="LYo-hV-ofj"/>
+                            <constraint firstItem="FDa-Ml-f2V" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.25" id="Nye-RB-wlF"/>
                             <constraint firstItem="dA5-38-t3q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OUc-GA-8hJ"/>
                             <constraint firstItem="dA5-38-t3q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="VwC-d8-eqK"/>
                             <constraint firstItem="U11-5O-Lfp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Whx-pc-KJN"/>
+                            <constraint firstItem="FDa-Ml-f2V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.1" id="auL-LS-b1y"/>
+                            <constraint firstItem="FDa-Ml-f2V" firstAttribute="centerY" secondItem="fyj-Gk-ghB" secondAttribute="centerY" multiplier="1.05" id="cHe-mC-BSn"/>
                             <constraint firstItem="U11-5O-Lfp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cbU-hR-pSq"/>
                             <constraint firstItem="dA5-38-t3q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="he5-CS-6VI"/>
+                            <constraint firstItem="fyj-Gk-ghB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.3" id="jBz-hZ-Wkv"/>
+                            <constraint firstItem="FDa-Ml-f2V" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="pRz-Fm-nTA"/>
                             <constraint firstItem="U11-5O-Lfp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xbx-dG-oKV"/>
                         </constraints>
                     </view>
