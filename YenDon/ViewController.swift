@@ -62,7 +62,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         let country = countries?[indexPath.row]
         
-        cell.image = UIImageView(image: country?.image)
+        cell.image.image = country?.image
         cell.labelRate.text = country?.rates.first?.amount.description
         cell.tag = indexPath.row
         cell.contentView.isUserInteractionEnabled = false
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let api = Api()
         let c:CollectionViewCell = cell as! CollectionViewCell
-        c.ind.startAnimating()
+//        c.ind.startAnimating()
         print("willセル\(cell.tag)")
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -130,17 +130,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var lastPointY = 0.0
     func handlePan( reconizer: UIPanGestureRecognizer) {
         let point = reconizer.translation(in: self.view)
-//        print(point.y)
+        print(point.y)
 //        let velocity = reconizer.velocity(in: self.view)
 //        print(velocity)
         let distance = lastPointY - Double(point.y)
         print(distance)
-        if let tf:UITextField = reconizer.view as? UITextField {
-            
-            let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
-            syncAmount(amount: amount)
+        let pointY = Double(point.y)
+        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
+//        if (abs(pointY - lastPointY) > 10) {
+            if let tf:UITextField = reconizer.view as? UITextField {
+                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
+                syncAmount(amount: amount)
+                            lastPointY = pointY
+            }
 
-        }
+//        }
+
     }
     
     private func syncAmount(amount: String) {

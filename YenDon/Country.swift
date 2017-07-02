@@ -14,13 +14,13 @@ class Country: Object {
     
     dynamic var name = "";
     dynamic private var _image: UIImage? = nil
-    dynamic private var imageData: NSData? = nil
+    dynamic private var imageData: Data? = nil
     let rates = List<Rate>()
     dynamic var image: UIImage? {
         set{
             self._image = newValue
             if let value = newValue {
-                self.imageData = UIImagePNGRepresentation(value) as NSData?
+                self.imageData = UIImagePNGRepresentation(value) as Data?
             }
         }
         get {
@@ -28,7 +28,7 @@ class Country: Object {
                 return image
             }
             if let data = self.imageData {
-                self._image = UIImage(data: data as Data)
+                self._image = UIImage(data: data)
                 return self._image
             }
             return nil
@@ -41,7 +41,7 @@ class Country: Object {
     }
     
     static func loadAll() -> [Country] {
-        let countries = realm.objects(Country.self).sorted(byKeyPath: "id", ascending: false)
+        let countries = realm.objects(Country.self).sorted(byKeyPath: "name", ascending: true)
         var ret: [Country] = []
         for country in countries {
             ret.append(country)

@@ -27,8 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Realm.Configuration.defaultConfiguration = config
         //　初期データが有るかどうか検索
         let realm = try! Realm()
-        let countries = realm.objects(Country.self).filter("name == %@", "VND")
-        if countries.count == 0 {
+        print(Country.loadAll())
+        let countries = realm.objects(Country.self).filter("name IN %@", Const.countries)
+        print(countries);
+        if countries.count < Const.countries.count {
+            print("initial data creating")
             // なければ作成
             let vnd = Country.create(Const.VND, image: #imageLiteral(resourceName: "Vietnam"))
             let jpy = Country.create(Const.JPY, image: #imageLiteral(resourceName: "Japan"))
