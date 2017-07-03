@@ -129,22 +129,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //
     var lastPointY = 0.0
     func handlePan( reconizer: UIPanGestureRecognizer) {
-        let point = reconizer.translation(in: self.view)
-        print(point.y)
+        if (reconizer.state == .changed) {
+            if let tf:UITextField = reconizer.view as? UITextField {
+                let point = reconizer.translation(in: self.view)
+                print(point.y)
+                let pointY = Int(point.y) * -1
+                let amount = Double(tf.text!)
+                let toBeAmount = Utils.calcAmount(amount!, moved: pointY).description
+                syncAmount(amount: toBeAmount)
+            }
+        }
 //        let velocity = reconizer.velocity(in: self.view)
 //        print(velocity)
-        let distance = lastPointY - Double(point.y)
-        print(distance)
-        let pointY = Double(point.y)
-        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
-//        if (abs(pointY - lastPointY) > 10) {
-            if let tf:UITextField = reconizer.view as? UITextField {
-                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
-                syncAmount(amount: amount)
-                            lastPointY = pointY
-            }
-
-//        }
+//        let distance = lastPointY - Double(point.y)
+//        print(distance)
+//        let pointY = Double(point.y)
+//        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
+////        if (abs(pointY - lastPointY) > 10) {
+//            if let tf:UITextField = reconizer.view as? UITextField {
+//                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
+//                syncAmount(amount: amount)
+//                            lastPointY = pointY
+//            }
+//
+////        }
 
     }
     

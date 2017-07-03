@@ -16,4 +16,8 @@ struct Const {
     static let IMAGE_JPY = #imageLiteral(resourceName: "Japan")
     static let IMAGE_USD = #imageLiteral(resourceName: "United-States")
     static let IMAGE_AUD = #imageLiteral(resourceName: "Australia")
+    static let RATE_VND_JPY = 0.004944
+    static let RATE_VND_USD = 0.0000439
+    static let RATE_VND_AUD = 0.0000572235
+
 }

@@ -38,6 +38,14 @@ class Utils {
         return NSDecimalNumber(string: willString)
     }
     
+    static func calcAmount(_ currentValue: Double, moved: Int) -> Double {
+        let amount = currentValue + Double(moved)
+        if (amount < 0) {
+            return 0
+        }
+        return amount
+    }
+    
     static func calcAmount(_ currentValue: NSDecimalNumber, moveLength:Double) -> NSDecimalNumber {
 //        let plus = moveLength <= 0 // 上がマイナス、下が＋なので逆転
         if (currentValue == NSDecimalNumber.zero && moveLength > 0) {

@@ -23,6 +23,8 @@
 		9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
 		9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
 		9679B6EE1ED1A5D9000FF0FC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
+		967B408E1F0A434F002EE2D3 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967B408D1F0A434F002EE2D3 /* SwiftDate.framework */; };
+		967B40921F0A9157002EE2D3 /* Realm+SafeWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B40911F0A9157002EE2D3 /* Realm+SafeWrite.swift */; };
 		9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682B7731EF6BB4800F04EA8 /* Api.swift */; };
 		96D7BFD41EF8175E00F0E6F1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */; };
 		96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
@@ -78,6 +80,8 @@
 		9679B6E71ED1A33D000FF0FC /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
 		9679B6E91ED1A410000FF0FC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		967B408D1F0A434F002EE2D3 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
+		967B40911F0A9157002EE2D3 /* Realm+SafeWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+SafeWrite.swift"; sourceTree = "<group>"; };
 		9682B7731EF6BB4800F04EA8 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967B408E1F0A434F002EE2D3 /* SwiftDate.framework in Frameworks */,
 				96D7BFD41EF8175E00F0E6F1 /* Alamofire.framework in Frameworks */,
 				96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */,
 				9679B6ED1ED1A5D9000FF0FC /* Realm.framework in Frameworks */,
@@ -180,6 +185,7 @@
 		9641E7A21EE9A10C0004333D /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				967B40911F0A9157002EE2D3 /* Realm+SafeWrite.swift */,
 				9641E7A01EE99DCC0004333D /* Utils.swift */,
 				9682B7731EF6BB4800F04EA8 /* Api.swift */,
 				962C054D1F07F26B0011FF82 /* Const.swift */,
@@ -190,6 +196,7 @@
 		9679B6E61ED1A338000FF0FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				967B408D1F0A434F002EE2D3 /* SwiftDate.framework */,
 				9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */,
 				9679B6E91ED1A410000FF0FC /* Realm.framework */,
 				96D7BFEB1EF9578B00F0E6F1 /* Alamofire.framework.dSYM */,
@@ -372,6 +379,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 			);
 			outputPaths = (
 			);
@@ -403,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967B40921F0A9157002EE2D3 /* Realm+SafeWrite.swift in Sources */,
 				9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */,
 				962C054C1F0784F30011FF82 /* Rate.swift in Sources */,
 				962C054E1F07F26B0011FF82 /* Const.swift in Sources */,

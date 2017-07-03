@@ -55,13 +55,15 @@ class SplashViewController: UIViewController {
         ani.repeatCount = MAXFLOAT
         self.star.layer.add(ani, forKey: "startRotation")
         CATransaction.commit()
-        let api = Api(pairs: ["JPYVND", "USDVND","AUDVND"])
-        api.request(success: { (response) in
-            //
-           
+//        let api = Api(pairs: ["JPYVND", "USDVND","AUDVND"])
+        
+        if (Country.loadAll().count == 0) {
+            Country.createInitialCountries()
+        }
+        Country.updateFromApi { 
             self.moveLogo()
             self.moveStar()
-         
+            
             
             UIView.animate(withDuration: duration, delay: 0.0,
                            options: .curveEaseIn,
@@ -74,11 +76,30 @@ class SplashViewController: UIViewController {
                 self.goToMain()
             })
 
-
-        }) { (error) in
-            //
         }
-
+//        api.request(success: { (response) in
+//            //
+//           
+//            self.moveLogo()
+//            self.moveStar()
+//         
+//            
+//            UIView.animate(withDuration: duration, delay: 0.0,
+//                           options: .curveEaseIn,
+//                           animations: {
+//                            self.star.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+//                            self.view.layoutIfNeeded()
+//            }, completion: { (finished: Bool) in
+//                //
+//                self.star.layer.removeAllAnimations()
+//                self.goToMain()
+//            })
+//
+//
+//        }) { (error) in
+//            //
+//        }
+//
 
     }
     
