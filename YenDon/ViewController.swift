@@ -27,9 +27,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         overseasCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         localCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-        localPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
-        overseaPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
-        overseaPanReconizer.cancelsTouchesInView = false
+//        localPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
+//        overseaPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
+//        overseaPanReconizer.cancelsTouchesInView = false
+        
+        
         
     }
 
@@ -38,6 +40,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Dispose of any resources that can be recreated.
     }
 
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == overseasCollectionView {
             return overseaCountries.count
@@ -47,6 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("start displaying")
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         var countries:[Country]!
         var panReconizer:UIPanGestureRecognizer?
@@ -76,27 +81,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.setRate((country.rates.first?.amount)!)
         cell.tag = indexPath.row
         cell.contentView.isUserInteractionEnabled = false
-        cell.textAmount.addGestureRecognizer(panReconizer!)
+        cell.textAmount.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:))))
         cell.textAmount.delegate = self
         if (cell.textAmount.text?.isEmpty)! {
             cell.textAmount.text = "0"
-        }
-//        print("セル表示中〜　\(cell)")
-        if lastSelectedCell == nil {
-            lastSelectedCell = cell
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let api = Api()
         let c:CollectionViewCell = cell as! CollectionViewCell
 //        c.ind.startAnimating()
         print("willセル\(cell.tag)")
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print("didセル\(cell.tag) last\(lastSelectedCell?.tag)")
-        swapReconizer(cell: cell as! CollectionViewCell)
+        if lastSelectedCell != cell {
+//            swapReconizer(cell: cell as! CollectionViewCell)
+        }
 
     }
     // FlowLayoutの
@@ -125,12 +127,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let v:UICollectionView = scrollView as! UICollectionView
         let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
         print("begin dragging", c.tag)
+        lastSelectedCell = c
     }
     
 //    var lastSelectedCellIndex:Int = 0
     var lastSelectedCell:CollectionViewCell?
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       
+       print("end decelerating")
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -182,36 +185,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
 
     
-    private func swapReconizer(cell: CollectionViewCell) {
-        if cell.superview != lastSelectedCell?.superview {
-            return
-        }
-        
-        let v:UICollectionView = cell.superview as! UICollectionView
-        let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
-        
-        // if selected same as before, nothing to do
-//        print("\(c.tag), \(lastSelectedCell?.tag)")
-        if c == lastSelectedCell {
-            return
-        }
-        
-        var panReconizer:UIPanGestureRecognizer?
-        if v == overseasCollectionView {
-            panReconizer = self.overseaPanReconizer
-        } else {
-            panReconizer = localPanReconizer
-        }
-        
-        
-        print("end decelerating", c.tag)
-        if lastSelectedCell != c {
-            c.textAmount.delegate = self
-            c.textAmount.addGestureRecognizer(panReconizer!)
-            lastSelectedCell?.textAmount.removeGestureRecognizer(panReconizer!)
-        }
-        lastSelectedCell = c
-    }
+//    private func swapReconizer(cell: CollectionViewCell) {
+//        if cell.superview != lastSelectedCell?.superview {
+//            return
+//        }
+//        
+//        let v:UICollectionView = cell.superview as! UICollectionView
+//        let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
+//        
+//        // if selected same as before, nothing to do
+////        print("\(c.tag), \(lastSelectedCell?.tag)")
+//        if c == lastSelectedCell {
+//            return
+//        }
+//        
+//        var panReconizer:UIPanGestureRecognizer?
+//        if v == overseasCollectionView {
+//            panReconizer = self.overseaPanReconizer
+//        } else {
+//            panReconizer = localPanReconizer
+//        }
+//        
+//        
+//        print("end decelerating", c.tag)
+//        if lastSelectedCell != c {
+//            c.textAmount.delegate = self
+//            c.textAmount.addGestureRecognizer(panReconizer!)
+//            lastSelectedCell?.textAmount.removeGestureRecognizer(panReconizer!)
+//        }
+////        lastSelectedCell = c
+//    }
 }
 
 extension ViewController: UITextFieldDelegate {
