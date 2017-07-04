@@ -48,22 +48,32 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        var countries:[Country]?
+        var countries:[Country]!
         var panReconizer:UIPanGestureRecognizer?
-        var rateText: String?
+        var oppositeView:UICollectionView?
+        // CollectionViewの判定
         if collectionView == overseasCollectionView {
             countries = overseaCountries
             panReconizer = overseaPanReconizer
-            
-            
+            oppositeView = localCollectionView
         } else {
             countries = localCountries
             panReconizer = localPanReconizer
+            oppositeView = overseasCollectionView
         }
-        let country = countries?[indexPath.row]
+        let country = countries[indexPath.row]
+        if ((oppositeView?.visibleCells.count)! > 0) {
+            let oppositeIndexPath = oppositeView?.indexPath(for: (oppositeView?.visibleCells[0])!)
+            if (oppositeIndexPath?.count)! > 0 {
+                let oppositeCountry = countries[(oppositeIndexPath?.row)!]
+                print("opposite \(oppositeCountry)")
+            }
+        }
+        cell.image.image = country.image
+//        cell.labelRate.text = country?.rates.first?.amount.description
+        cell.countryName = country.name
         
-        cell.image.image = country?.image
-        cell.labelRate.text = country?.rates.first?.amount.description
+        cell.setRate((country.rates.first?.amount)!)
         cell.tag = indexPath.row
         cell.contentView.isUserInteractionEnabled = false
         cell.textAmount.addGestureRecognizer(panReconizer!)

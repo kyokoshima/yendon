@@ -50,49 +50,27 @@ class Country: Object {
             Api().request(["JPYVND", "USDVND","AUDVND"], success: { (data) in
                 //
                 for (key, rate) in data {
-                    print (rate)
+//                    print (rate)
+                    let id = rate["id"].stringValue.components(separatedBy: "VND")[0]
+                    let bid = rate["Bid"].doubleValue
+                    let ask = rate["Ask"].doubleValue
+                    let updated = rate["Date"].stringValue.date(format: DateFormat.custom("MM/SS/yyyy"))?.absoluteDate
+                    try! realm.safeWrite {
+                        Country.find(id)?.rates.append(Rate.create(Const.VND, bid: bid, ask: ask, updated: updated!))
+                        // 基軸側
+                        Country.find(Const.VND)?.rates.append(Rate.create(id, bid: 1 / bid, ask : 1 / ask, updated: updated!))
+                    }
                 }
+                finished()
             }, fail: { (error) in
                 //
                 createInitialRates()
+                finished()
             })
+        } else {
+            finished()
         }
-//        for country in countries {
-//            let latestRate = country.rates.sorted(byKeyPath: "updated", ascending: false).first
-//            print(latestRate)
-//            if (latestRate?.updated) != nil {
-//                let today = Date()
-//                let after = today.isAfter(date: (latestRate?.updated)!, granularity: .day)
-//                // 更新日が古ければ更新
-//                if after {
-//                    Api().request(["JPYVND", "USDVND","AUDVND"], success: { (data) in
-//                        //
-//                        let vnd = Country.find("VND")
-//                        for (key, rate) in data {
-//                            print(rate)
-//                            let id = rate["id"].stringValue.components(separatedBy: "VND")[0]
-//                            let amount = rate["Bid"].doubleValue
-//                            
-//                            let rec = vnd?.rates.filter("pairCurrency = %@", id).first
-//                            print("rec: \(rec)")
-////                            let newRate = vnd?.rates.append(Rate.create(id, ))
-//                        }
-//                        
-//                        finished()
-//                    }, fail: { (error) in
-//                        //
-//                        print(error)
-//                        // エラーのときだけ初期データ
-//                        createInitialRates()
-//                        finished()
-//                    })
-//                    
-//                } else {
-//                    finished()
-//                }
-//                
-//            }
-//        }
+
         
     }
     
@@ -128,30 +106,12 @@ class Country: Object {
         let usd = create(Const.USD, image: #imageLiteral(resourceName: "United-States"))
         let aud = create(Const.AUD, image: #imageLiteral(resourceName: "Australia"))
         
-//        // 日付デフォルト
-//        var dc = DateComponents()
-//        dc.year = 2017
-//        dc.month = 7
-//        dc.day = 1
-//        let initialDate = DateInRegion(components: dc)!.absoluteDate
-//        print(initialDate)
-//        // 為替初期値
-//        vnd.rates.append(Rate.create("JPY", bid: Const.RATE_VND_JPY, updated: initialDate))
-//        vnd.rates.append(Rate.create("USD", bid: Const.RATE_VND_USD, updated: initialDate))
-//        vnd.rates.append(Rate.create("AUD", bid: Const.RATE_VND_AUD, updated: initialDate))
-        vnd.save()
-//
-//        jpy.rates.append(Rate.create(Const.JPY, bid: 1 / Const.RATE_VND_JPY, updated: initialDate))
-        jpy.save()
-//        usd.rates.append(Rate.create(Const.USD, bid: 1 / Const.RATE_VND_USD, updated: initialDate))
-        usd.save()
-//
-//        aud.rates.append(Rate.create(Const.USD, bid: 1 / Const.RATE_VND_AUD, updated: initialDate))
-        aud.save()
-//
-//        try! realm.commitWrite()
-        
 
+        vnd.save()
+        jpy.save()
+        usd.save()
+        aud.save()
+        
     }
     
     static func createInitialRates() {

@@ -77,29 +77,6 @@ class SplashViewController: UIViewController {
             })
 
         }
-//        api.request(success: { (response) in
-//            //
-//           
-//            self.moveLogo()
-//            self.moveStar()
-//         
-//            
-//            UIView.animate(withDuration: duration, delay: 0.0,
-//                           options: .curveEaseIn,
-//                           animations: {
-//                            self.star.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-//                            self.view.layoutIfNeeded()
-//            }, completion: { (finished: Bool) in
-//                //
-//                self.star.layer.removeAllAnimations()
-//                self.goToMain()
-//            })
-//
-//
-//        }) { (error) in
-//            //
-//        }
-//
 
     }
     
