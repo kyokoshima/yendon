@@ -12,13 +12,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var localCollectionView: UICollectionView!
 
     @IBOutlet weak var overseasCollectionView: UICollectionView!
-    var overseaCountries:[Country] =
-        [Country.find(Const.JPY)!,
-        Country.find(Const.USD)!,
-        Country.find(Const.AUD)!]
-    var localCountries:[Country] = [Country.find(Const.VND)!]
-    var localPanReconizer: UIPanGestureRecognizer!
-    var overseaPanReconizer: UIPanGestureRecognizer!
+//    var overseaCountries:[Country] =
+//        [Country.find(Const.JPY)!,
+//        Country.find(Const.USD)!,
+//        Country.find(Const.AUD)!]
+//    var localCountries:[Country] = [Country.find(Const.VND)!]
+    var overseaCountries:[Country] = Country.loadOverseas(excludeCountry: Const.VND)
+    var localCountries:[Country] = Country.loadLocals()
+//    var localPanReconizer: UIPanGestureRecognizer!
+//    var overseaPanReconizer: UIPanGestureRecognizer!
     
     
     override func viewDidLoad() {
@@ -54,16 +56,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("start displaying")
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         var countries:[Country]!
-        var panReconizer:UIPanGestureRecognizer?
+//        var panReconizer:UIPanGestureRecognizer?
         var oppositeView:UICollectionView?
         // CollectionViewの判定
         if collectionView == overseasCollectionView {
             countries = overseaCountries
-            panReconizer = overseaPanReconizer
+//            panReconizer = overseaPanReconizer
             oppositeView = localCollectionView
         } else {
             countries = localCountries
-            panReconizer = localPanReconizer
+//            panReconizer = localPanReconizer
             oppositeView = overseasCollectionView
         }
         let country = countries[indexPath.row]
@@ -78,13 +80,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        cell.labelRate.text = country?.rates.first?.amount.description
         cell.countryName = country.name
         
-        cell.setRate((country.rates.first?.amount)!)
+        cell.setRate((country.rates.first?.amountFromPair())!)
         cell.tag = indexPath.row
         cell.contentView.isUserInteractionEnabled = false
         cell.textAmount.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:))))
         cell.textAmount.delegate = self
         if (cell.textAmount.text?.isEmpty)! {
-            cell.textAmount.text = "0"
+            cell.textAmount.text = (0.0).description
         }
         return cell
     }

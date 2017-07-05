@@ -16,6 +16,7 @@ class Country: Object {
     dynamic var name = "";
     dynamic private var _image: UIImage? = nil
     dynamic private var imageData: Data? = nil
+    dynamic private var symbol = ""
     let rates = List<Rate>()
     dynamic var image: UIImage? {
         set{
@@ -83,11 +84,24 @@ class Country: Object {
         return ret
     }
     
+    static func loadOverseas(excludeCountry: String) -> [Country] {
+        return Array(realm.objects(Country.self).filter("name != %@", excludeCountry))
+    }
+    
+    static func loadLocals() -> [Country] {
+        return [find(Const.VND)!]
+    }
+    
     static func create(_ name: String, image:UIImage) -> Country {
         let country = Country()
         country.image = image
         country.name = name
-        return country
+//        if let symbol = Const.symbols.first(where: { (key, _) in key.contains(symbol) }) {
+//            country.symbol  = symbol
+//        } else {
+//            country.symbol = ""
+//        }
+                return country
     }
     
     static func find(_ name:String) -> Country? {

@@ -10,14 +10,23 @@ import UIKit
 
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     var numberOfItemsInSection:((Int) -> ())?
+    var cellForItemAt:((IndexPath) -> (UICollectionViewCell))?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
         return 0
     }
     
-    init(numberOfItemsInSection: ((Int) -> ())? = nil) {
+    func collectionView(_ collectionView: UICollectionView, cellFormItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    init(
+        numberOfItemsInSection: ((Int) -> ())? = nil,
+        cellForItemAt: ((IndexPath) -> (UICollectionViewCell))? = nil)
+    {
         self.numberOfItemsInSection = numberOfItemsInSection
+        self.cellForItemAt = cellForItemAt
     }
     
     

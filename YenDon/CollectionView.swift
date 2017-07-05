@@ -13,9 +13,11 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ind: UIActivityIndicatorView!
     @IBOutlet weak var textAmount: UITextField!
     @IBOutlet weak var image: UIImageView!
-    var countryName:String!
+    var countryName:String = ""
     
     func setRate(_ rate: Double) {
-        labelRate.text = "\(self.countryName) \(rate.description)"
+        let digit = 100000.0
+        let rateString = (round(rate * digit) / digit).description
+        labelRate.text = "\(self.countryName) \(rateString))"
     }
 }

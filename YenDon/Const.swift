@@ -19,5 +19,6 @@ struct Const {
     static let RATE_VND_JPY = 0.004944
     static let RATE_VND_USD = 0.0000439
     static let RATE_VND_AUD = 0.0000572235
-
+    static let symbols = [Const.VND: "₫", Const.JPY: "￥", Const.USD: "US＄", Const.AUD: "AU$"
+    ]
 }
