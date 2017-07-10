@@ -16,7 +16,8 @@ class Country: Object {
     dynamic var name = "";
     dynamic private var _image: UIImage? = nil
     dynamic private var imageData: Data? = nil
-    dynamic private var symbol = ""
+    dynamic var symbol = ""
+    dynamic var minimumAmount: Double = 1.0
     let rates = List<Rate>()
     dynamic var image: UIImage? {
         set{
@@ -92,16 +93,13 @@ class Country: Object {
         return [find(Const.VND)!]
     }
     
-    static func create(_ name: String, image:UIImage) -> Country {
+    static func create(_ name: String, image:UIImage, symbol: String, minAmount: Double) -> Country {
         let country = Country()
         country.image = image
         country.name = name
-//        if let symbol = Const.symbols.first(where: { (key, _) in key.contains(symbol) }) {
-//            country.symbol  = symbol
-//        } else {
-//            country.symbol = ""
-//        }
-                return country
+        country.symbol = symbol
+        country.minimumAmount = minAmount
+        return country
     }
     
     static func find(_ name:String) -> Country? {
@@ -115,16 +113,19 @@ class Country: Object {
         print("initial data creating")
         // なければ作成
         
-        let vnd = create(Const.VND, image: #imageLiteral(resourceName: "Vietnam"))
-        let jpy = create(Const.JPY, image: #imageLiteral(resourceName: "Japan"))
-        let usd = create(Const.USD, image: #imageLiteral(resourceName: "United-States"))
-        let aud = create(Const.AUD, image: #imageLiteral(resourceName: "Australia"))
-        
-
-        vnd.save()
-        jpy.save()
-        usd.save()
-        aud.save()
+//        let vnd = create(Const.VND, image: #imageLiteral(resourceName: "Vietnam"), Const.symbols[Const.VND], Const.)
+//        let jpy = create(Const.JPY, image: #imageLiteral(resourceName: "Japan"))
+//        let usd = create(Const.USD, image: #imageLiteral(resourceName: "United-States"))
+//        let aud = create(Const.AUD, image: #imageLiteral(resourceName: "Australia"))
+//        
+//
+//        vnd.save()
+//        jpy.save()
+//        usd.save()
+//        aud.save()
+        for country in Const.COUNTRIES {
+            country.save()
+        }
         
     }
     

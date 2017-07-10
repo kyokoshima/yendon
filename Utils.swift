@@ -38,10 +38,10 @@ class Utils {
         return NSDecimalNumber(string: willString)
     }
     
-    static func calcAmount(_ currentValue: Double, moved: Int) -> Double {
+    static func calcAmount(_ currentValue: Double, moved: Int, min: Double) -> Double {
         let amount = currentValue + Double(moved)
-        if (amount < 0) {
-            return 0
+        if (amount <= min) {
+            return min
         }
         return amount
     }

@@ -19,36 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // migration
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                 }
         })
         Realm.Configuration.defaultConfiguration = config
-        //　初期データが有るかどうか検索
-//        let realm = try! Realm()
-////        print(Country.loadAll())
-//        let countries = realm.objects(Country.self).filter("name IN %@", Const.countries)
-////        print(countries);
-//        if countries.count < Const.countries.count {
-//            print("initial data creating")
-//            // なければ作成
-//            let vnd = Country.create(Const.VND, image: #imageLiteral(resourceName: "Vietnam"))
-//            let jpy = Country.create(Const.JPY, image: #imageLiteral(resourceName: "Japan"))
-//            let usd = Country.create(Const.USD, image: #imageLiteral(resourceName: "United-States"))
-//            let aud = Country.create(Const.AUD, image: #imageLiteral(resourceName: "Australia"))
-//            
-//            // 為替初期値
-//            vnd.rates.append(Rate.create("JPY", bid: 0.004944))
-//            vnd.rates.append(Rate.create("USD", bid: 0.0000439))
-//            vnd.rates.append(Rate.create("AUD", bid: 0.0000572235))
-//
-//            vnd.save()
-//            jpy.save()
-//            usd.save()
-//            aud.save()
-//            
-//        }
         return true
     }
     

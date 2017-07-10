@@ -9,19 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    @IBOutlet weak var localCollectionView: UICollectionView!
+    @IBOutlet weak var localCollectionView: CollectionView!
+    @IBOutlet weak var overseasCollectionView: CollectionView!
 
-    @IBOutlet weak var overseasCollectionView: UICollectionView!
-//    var overseaCountries:[Country] =
-//        [Country.find(Const.JPY)!,
-//        Country.find(Const.USD)!,
-//        Country.find(Const.AUD)!]
-//    var localCountries:[Country] = [Country.find(Const.VND)!]
     var overseaCountries:[Country] = Country.loadOverseas(excludeCountry: Const.VND)
     var localCountries:[Country] = Country.loadLocals()
-//    var localPanReconizer: UIPanGestureRecognizer!
-//    var overseaPanReconizer: UIPanGestureRecognizer!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +21,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         overseasCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         localCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-//        localPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
-//        overseaPanReconizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:)))
-//        overseaPanReconizer.cancelsTouchesInView = false
-        
-        
         
     }
 
@@ -55,30 +42,41 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("start displaying")
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        var countries:[Country]!
-//        var panReconizer:UIPanGestureRecognizer?
-        var oppositeView:UICollectionView?
-        // CollectionViewの判定
-        if collectionView == overseasCollectionView {
-            countries = overseaCountries
-//            panReconizer = overseaPanReconizer
-            oppositeView = localCollectionView
-        } else {
-            countries = localCountries
-//            panReconizer = localPanReconizer
-            oppositeView = overseasCollectionView
-        }
+//        var countries:[Country]!
+//        var pairCountries: [Country]!
+        let cv:CollectionView = collectionView as! CollectionView
+
+        let oppositeView:CollectionView = self.oppositeView(cv)
+        let pairCountries = self.pairCountries(cv)
+        let countries = self.currentCountries(cv)
+//        // CollectionViewの判定
+//                if cv.isOversea() {
+////            countries = overseaCountries
+////            pairCountries = localCountries
+////            panReconizer = overseaPanReconizer
+////            oppositeView = localCollectionView
+//        } else {
+////            countries = localCountries
+////            panReconizer = localPanReconizer
+////            pairCountries = overseaCountries
+////            oppositeView = overseasCollectionView
+//        }
         let country = countries[indexPath.row]
-        if ((oppositeView?.visibleCells.count)! > 0) {
-            let oppositeIndexPath = oppositeView?.indexPath(for: (oppositeView?.visibleCells[0])!)
+        var pairCountry:Country?
+        if ((oppositeView.visibleCells.count) > 0) {
+            let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
             if (oppositeIndexPath?.count)! > 0 {
-                let oppositeCountry = countries[(oppositeIndexPath?.row)!]
-                print("opposite \(oppositeCountry)")
+                pairCountry = pairCountries[(oppositeIndexPath?.row)!]
+                print("opposite \(pairCountry)")
             }
         }
         cell.image.image = country.image
 //        cell.labelRate.text = country?.rates.first?.amount.description
-        cell.countryName = country.name
+//        cell.countryName = country.name
+        cell.country = country
+        cell.pairCountry = pairCountry
+        print("country: \(country) pair: \(pairCountry)")
+        print("\(cv.type)")
         
         cell.setRate((country.rates.first?.amountFromPair())!)
         cell.tag = indexPath.row
@@ -86,15 +84,41 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.textAmount.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:))))
         cell.textAmount.delegate = self
         if (cell.textAmount.text?.isEmpty)! {
-            cell.textAmount.text = (0.0).description
+            cell.textAmount.text = country.minimumAmount.description
         }
         return cell
+    }
+    
+    private func pairCountry(_ collectionView: CollectionView) -> Country {
+        let pairCountries = self.pairCountries(collectionView)
+        let oppositeView = self.oppositeView(collectionView)
+        var pairCountry:Country?
+        if ((oppositeView.visibleCells.count) > 0) {
+            let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
+            if (oppositeIndexPath?.count)! > 0 {
+                pairCountry = pairCountries[(oppositeIndexPath?.row)!]
+                print("opposite \(pairCountry)")
+            }
+        }
+        return pairCountry!
+    }
+    
+    private func currentCountries(_ collectionView: CollectionView) -> [Country] {
+        return collectionView.isLocal() ? localCountries : overseaCountries
+    }
+    
+    private func pairCountries(_ collectionView: CollectionView) -> [Country] {
+        return collectionView.isLocal() ? overseaCountries : localCountries
+    }
+    
+    private func oppositeView(_ collectionView: CollectionView) -> CollectionView {
+        return collectionView.isLocal() ? overseasCollectionView : localCollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let c:CollectionViewCell = cell as! CollectionViewCell
 //        c.ind.startAnimating()
-        print("willセル\(cell.tag)")
+        print("willセル\(c.country)")
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print("didセル\(cell.tag) last\(lastSelectedCell?.tag)")
@@ -145,14 +169,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var lastPointY = 0.0
     func handlePan( reconizer: UIPanGestureRecognizer) {
         if (reconizer.state == .changed) {
-            if let tf:UITextField = reconizer.view as? UITextField {
-                let point = reconizer.translation(in: self.view)
-                print(point.y)
-                let pointY = Int(point.y) * -1
-                let amount = Double(tf.text!)
-                let toBeAmount = Utils.calcAmount(amount!, moved: pointY).description
-                syncAmount(amount: toBeAmount)
-            }
+//            if let tf:UITextField = reconizer.view as? UITextField {
+//                let point = reconizer.translation(in: self.view)
+//                print(point.y)
+//                let pointY = Int(point.y) * -1
+//                let amount = Double(tf.text!)
+//                let cell:CollectionViewCell = reconizer.view?.superview as! CollectionViewCell
+//                print(cell)
+//                let country = cell.country
+//                let pairCountry = cell.pairCountry
+//                let pairRate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).first
+//                let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!).description
+//                syncAmount(amount: toBeAmount, pairRate: (pairRate?.amount)!)
+//            }
         }
 //        let velocity = reconizer.velocity(in: self.view)
 //        print(velocity)
@@ -171,7 +200,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
-    private func syncAmount(amount: String) {
+    private func syncAmount(amount: String, pairRate: Double) {
         let tf1:UITextField = (overseasCollectionView.visibleCells[0] as! CollectionViewCell).textAmount
         let tf2:UITextField = (localCollectionView.visibleCells[0] as! CollectionViewCell).textAmount
         tf1.text = amount

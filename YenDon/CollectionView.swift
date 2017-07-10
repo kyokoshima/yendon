@@ -1,23 +1,32 @@
 //
-//  CollectionView.swift
+//  CollectionViewCollectionReusableView.swift
 //  YenDon
 //
-//  Created by 横島健一 on 2017/05/13.
+//  Created by 横島健一 on 2017/07/10.
 //  Copyright © 2017年 info.tmpla. All rights reserved.
 //
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var labelRate: UILabel!
-    @IBOutlet weak var ind: UIActivityIndicatorView!
-    @IBOutlet weak var textAmount: UITextField!
-    @IBOutlet weak var image: UIImageView!
-    var countryName:String = ""
+class CollectionView: UICollectionView {
+    @IBInspectable var type: String? = ""
     
-    func setRate(_ rate: Double) {
-        let digit = 100000.0
-        let rateString = (round(rate * digit) / digit).description
-        labelRate.text = "\(self.countryName) \(rateString))"
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func isOversea() -> Bool {
+        return type == "oversea"
+    }
+    
+    func isLocal() -> Bool {
+        return type == "local"
+    }
+    
+    
 }

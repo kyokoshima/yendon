@@ -17,7 +17,7 @@
 		963AA0C91EC7017A00B2D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0C71EC7017A00B2D2B5 /* LaunchScreen.storyboard */; };
 		963AA0DF1EC7017A00B2D2B5 /* YenDonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */; };
 		963AA0ED1EC70F3700B2D2B5 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */; };
-		963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionView.swift */; };
+		963AA0F21EC714A000B2D2B5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963AA0F11EC714A000B2D2B5 /* CollectionViewCell.swift */; };
 		9641E7A11EE99DCC0004333D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9641E7A01EE99DCC0004333D /* Utils.swift */; };
 		9679B6EA1ED1A410000FF0FC /* Realm.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6E91ED1A410000FF0FC /* Realm.framework */; };
 		9679B6EC1ED1A417000FF0FC /* RealmSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9679B6EB1ED1A417000FF0FC /* RealmSwift.framework */; };
@@ -26,6 +26,7 @@
 		967B408E1F0A434F002EE2D3 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967B408D1F0A434F002EE2D3 /* SwiftDate.framework */; };
 		967B40921F0A9157002EE2D3 /* Realm+SafeWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B40911F0A9157002EE2D3 /* Realm+SafeWrite.swift */; };
 		967B40941F0BE0A9002EE2D3 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B40931F0BE0A9002EE2D3 /* CollectionViewDelegate.swift */; };
+		967B40961F13AD8A002EE2D3 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B40951F13AD8A002EE2D3 /* CollectionView.swift */; };
 		9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682B7731EF6BB4800F04EA8 /* Api.swift */; };
 		96D7BFD41EF8175E00F0E6F1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */; };
 		96D7BFD61EF8177200F0E6F1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */; };
@@ -76,7 +77,7 @@
 		963AA0DE1EC7017A00B2D2B5 /* YenDonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YenDonUITests.swift; sourceTree = "<group>"; };
 		963AA0E01EC7017A00B2D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		963AA0F11EC714A000B2D2B5 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		963AA0F11EC714A000B2D2B5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9641E7A01EE99DCC0004333D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../Utils.swift; sourceTree = "<group>"; };
 		9679B6E71ED1A33D000FF0FC /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
 		9679B6E91ED1A410000FF0FC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		967B408D1F0A434F002EE2D3 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
 		967B40911F0A9157002EE2D3 /* Realm+SafeWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+SafeWrite.swift"; sourceTree = "<group>"; };
 		967B40931F0BE0A9002EE2D3 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
+		967B40951F13AD8A002EE2D3 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		9682B7731EF6BB4800F04EA8 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		96D7BFD31EF8175E00F0E6F1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		96D7BFD51EF8177200F0E6F1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -180,7 +182,8 @@
 				963AA0C21EC7017A00B2D2B5 /* Main.storyboard */,
 				963AA0C01EC7017A00B2D2B5 /* ViewController.swift */,
 				963AA0EC1EC70F3700B2D2B5 /* CollectionViewCell.xib */,
-				963AA0F11EC714A000B2D2B5 /* CollectionView.swift */,
+				963AA0F11EC714A000B2D2B5 /* CollectionViewCell.swift */,
+				967B40951F13AD8A002EE2D3 /* CollectionView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -416,11 +419,12 @@
 			files = (
 				967B40921F0A9157002EE2D3 /* Realm+SafeWrite.swift in Sources */,
 				9682B7741EF6BB4800F04EA8 /* Api.swift in Sources */,
+				967B40961F13AD8A002EE2D3 /* CollectionView.swift in Sources */,
 				962C054C1F0784F30011FF82 /* Rate.swift in Sources */,
 				962C054E1F07F26B0011FF82 /* Const.swift in Sources */,
 				9641E7A11EE99DCC0004333D /* Utils.swift in Sources */,
 				96FD8D6F1ED1B2BB006979FE /* Country.swift in Sources */,
-				963AA0F21EC714A000B2D2B5 /* CollectionView.swift in Sources */,
+				963AA0F21EC714A000B2D2B5 /* CollectionViewCell.swift in Sources */,
 				963AA0C11EC7017A00B2D2B5 /* ViewController.swift in Sources */,
 				962C054A1F03EEAE0011FF82 /* SplashViewController.swift in Sources */,
 				963AA0BF1EC7017A00B2D2B5 /* AppDelegate.swift in Sources */,
