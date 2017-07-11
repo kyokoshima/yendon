@@ -169,35 +169,40 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var lastPointY = 0.0
     func handlePan( reconizer: UIPanGestureRecognizer) {
         if (reconizer.state == .changed) {
-//            if let tf:UITextField = reconizer.view as? UITextField {
-//                let point = reconizer.translation(in: self.view)
-//                print(point.y)
-//                let pointY = Int(point.y) * -1
-//                let amount = Double(tf.text!)
-//                let cell:CollectionViewCell = reconizer.view?.superview as! CollectionViewCell
-//                print(cell)
-//                let country = cell.country
-//                let pairCountry = cell.pairCountry
-//                let pairRate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).first
-//                let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!).description
-//                syncAmount(amount: toBeAmount, pairRate: (pairRate?.amount)!)
-//            }
+            if let tf:UITextField = reconizer.view as? UITextField {
+                let point = reconizer.translation(in: self.view)
+                //                print(point.y)
+                let pointY = Int(point.y) * -1
+                let amount = Double(tf.text!)
+                let cell:CollectionViewCell = reconizer.view?.superview as! CollectionViewCell
+                let country = cell.country
+                let pairCountry = self.pairCountry(cell.superview as! CollectionView)
+                let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!)
+                cell.setAmount(toBeAmount, pair: pairCountry)
+                //                print(cell)
+                //                let country = cell.country
+                //                let pairCountry = cell.pairCountry
+                //                let pairRate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).first
+//                let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!)
+                //                syncAmount(amount: toBeAmount, pairRate: (pairRate?.amount)!)
+            }
         }
-//        let velocity = reconizer.velocity(in: self.view)
-//        print(velocity)
-//        let distance = lastPointY - Double(point.y)
-//        print(distance)
-//        let pointY = Double(point.y)
-//        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
-////        if (abs(pointY - lastPointY) > 10) {
-//            if let tf:UITextField = reconizer.view as? UITextField {
-//                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
-//                syncAmount(amount: amount)
-//                            lastPointY = pointY
-//            }
-//
-////        }
-
+        //        let velocity = reconizer.velocity(in: self.view)
+        //        print(velocity)
+        //        let distance = lastPointY - Double(point.y)
+        //        print(distance)
+        //        let pointY = Double(point.y)
+        //        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
+        ////        if (abs(pointY - lastPointY) > 10) {
+        //            if let tf:UITextField = reconizer.view as? UITextField {
+        //                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
+        //                syncAmount(amount: amount)
+        //                            lastPointY = pointY
+        //            }
+        //
+        ////        }
+        
+        
     }
     
     private func syncAmount(amount: String, pairRate: Double) {

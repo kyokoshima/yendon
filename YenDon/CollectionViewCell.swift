@@ -25,7 +25,9 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setAmount(_ amount:Double, pair: Country) {
-//        let rate = country?.rates.filter("name = %@", pair.name).sorted(by: "updated").first
-    
+        let rate = country?.rates.filter("pairCurrency = %@", pair.name).sorted(byKeyPath: "updated", ascending: false).first
+        print("amount: \(amount), pair: \(rate?.amount)")
+        let localAmount = amount * (rate?.amount)!
+        self.textAmount.text = localAmount.description
     }
 }

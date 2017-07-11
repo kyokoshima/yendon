@@ -58,9 +58,9 @@ class Country: Object {
                     let ask = rate["Ask"].doubleValue
                     let updated = rate["Date"].stringValue.date(format: DateFormat.custom("MM/SS/yyyy"))?.absoluteDate
                     try! realm.safeWrite {
-                        Country.find(id)?.rates.append(Rate.create(Const.VND, bid: bid, ask: ask, updated: updated!))
+                        Country.find(id)?.rates.append(Rate.create(Const.VND, bid: 1 / bid, ask: 1 / ask, updated: updated!))
                         // 基軸側
-                        Country.find(Const.VND)?.rates.append(Rate.create(id, bid: 1 / bid, ask : 1 / ask, updated: updated!))
+                        Country.find(Const.VND)?.rates.append(Rate.create(id, bid: bid, ask : ask, updated: updated!))
                     }
                 }
                 finished()
@@ -144,14 +144,14 @@ class Country: Object {
         vnd.save()
         
         let jpy = Country.find(Const.JPY)!
-        jpy.rates.append(Rate.create(Const.JPY, bid: 1 / Const.RATE_VND_JPY, updated: initialDate))
+        jpy.rates.append(Rate.create(Const.VND, bid: 1 / Const.RATE_VND_JPY, updated: initialDate))
         jpy.save()
         let usd = Country.find(Const.USD)!
-        usd.rates.append(Rate.create(Const.USD, bid: 1 / Const.RATE_VND_USD, updated: initialDate))
+        usd.rates.append(Rate.create(Const.VND, bid: 1 / Const.RATE_VND_USD, updated: initialDate))
         usd.save()
         
         let aud = Country.find(Const.AUD)!
-        aud.rates.append(Rate.create(Const.USD, bid: 1 / Const.RATE_VND_AUD, updated: initialDate))
+        aud.rates.append(Rate.create(Const.VND, bid: 1 / Const.RATE_VND_AUD, updated: initialDate))
         aud.save()
 
     }
