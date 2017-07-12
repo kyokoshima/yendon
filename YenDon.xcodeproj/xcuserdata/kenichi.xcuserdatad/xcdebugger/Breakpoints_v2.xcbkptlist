@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272">
+            startingLineNumber = "292"
+            endingLineNumber = "292">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277">
+            startingLineNumber = "297"
+            endingLineNumber = "297">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278">
+            startingLineNumber = "298"
+            endingLineNumber = "298">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -738,11 +738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -754,11 +754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470260.200787"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -818,11 +818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521394175.811186"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -834,11 +834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/CollectionViewCell.swift"
-            timestampString = "521394765.977507"
+            timestampString = "521555736.149902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "setAmount(_:pair:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -850,11 +850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/ViewController.swift"
-            timestampString = "521470278.973253"
+            timestampString = "521561309.466893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "handlePan(reconizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -866,11 +866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YenDon/CollectionViewCell.swift"
-            timestampString = "521472390.370698"
+            timestampString = "521555736.149902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "setAmount(_:pair:)"
             landmarkType = "7">
          </BreakpointContent>

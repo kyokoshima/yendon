@@ -15,8 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     var country:Country?
     var pairCountry: Country?
-
-    
+    dynamic var amount = 0.0
     func setRate(_ rate: Double) {
         let digit = 100000.0
         let rateString = (round(rate * digit) / digit).description
@@ -26,8 +25,17 @@ class CollectionViewCell: UICollectionViewCell {
     
     func setAmount(_ amount:Double, pair: Country) {
         let rate = country?.rates.filter("pairCurrency = %@", pair.name).sorted(byKeyPath: "updated", ascending: false).first
-        print("amount: \(amount), pair: \(rate?.amount)")
-        let localAmount = amount * (rate?.amount)!
-        self.textAmount.text = localAmount.description
+//        print("amount: \(amount), pair: \(rate?.amount)")
+//        let localAmount = amount * (rate?.amount)!
+//        self.textAmount.text = localAmount.description
+        self.amount = amount
+        self.textAmount.text = amount.description
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print(keyPath)
+        print(object)
+        print(change)
+    }
+    
 }

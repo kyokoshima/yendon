@@ -67,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
             if (oppositeIndexPath?.count)! > 0 {
                 pairCountry = pairCountries[(oppositeIndexPath?.row)!]
-                print("opposite \(pairCountry)")
+//                print("opposite \(pairCountry)")
             }
         }
         cell.image.image = country.image
@@ -75,8 +75,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        cell.countryName = country.name
         cell.country = country
         cell.pairCountry = pairCountry
-        print("country: \(country) pair: \(pairCountry)")
-        print("\(cv.type)")
+//        print("country: \(country) pair: \(pairCountry)")
+//        print("\(cv.type)")
         
         cell.setRate((country.rates.first?.amountFromPair())!)
         cell.tag = indexPath.row
@@ -97,7 +97,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
             if (oppositeIndexPath?.count)! > 0 {
                 pairCountry = pairCountries[(oppositeIndexPath?.row)!]
-                print("opposite \(pairCountry)")
+//                print("opposite \(pairCountry)")
             }
         }
         return pairCountry!
@@ -125,7 +125,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if lastSelectedCell != cell {
 //            swapReconizer(cell: cell as! CollectionViewCell)
         }
-
+//        let currentCell = completelyVisibleCell(collectionView)
+//        print("perfect !: \(currentCell)")
+//        let oppositeCell = completelyVisibleCell(oppositeView(collectionView as! CollectionView))
+//        currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+//        oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+        setObserver(collectionView as! CollectionView)
+        
+    }
+    
+    private func setObserver(_ collectionView: CollectionView) {
+        let currentCell = completelyVisibleCell(collectionView)
+        print("perfect !: \(currentCell)")
+        let oppositeCell = completelyVisibleCell(oppositeView(collectionView))
+        currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+        oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+    }
+    
+    private func completelyVisibleCell(_ collectionView: UICollectionView) -> CollectionViewCell {
+        return collectionView.visibleCells.filter {
+            collectionView.bounds.contains($0.frame)
+        }.first as! CollectionViewCell
     }
     // FlowLayoutの
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
