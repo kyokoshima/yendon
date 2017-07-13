@@ -86,6 +86,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if (cell.textAmount.text?.isEmpty)! {
             cell.textAmount.text = country.minimumAmount.description
         }
+        
         return cell
     }
     
@@ -118,10 +119,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let c:CollectionViewCell = cell as! CollectionViewCell
 //        c.ind.startAnimating()
-        print("willセル\(c.country)")
+//        print("willセル\(c.country?.name)")
     }
+    
+
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("viewDidScroll")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("didセル\(cell.tag) last\(lastSelectedCell?.tag)")
+        let c:CollectionViewCell = cell as! CollectionViewCell
+//        print("didセル\(c.country?.name) last\(lastSelectedCell?.tag)")
         if lastSelectedCell != cell {
 //            swapReconizer(cell: cell as! CollectionViewCell)
         }
@@ -130,7 +139,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        let oppositeCell = completelyVisibleCell(oppositeView(collectionView as! CollectionView))
 //        currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
 //        oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
-        setObserver(collectionView as! CollectionView)
+//        setObserver(collectionView as! CollectionView)
         
     }
     
@@ -174,12 +183,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
         print("begin dragging", c.tag)
         lastSelectedCell = c
+        
     }
     
 //    var lastSelectedCellIndex:Int = 0
     var lastSelectedCell:CollectionViewCell?
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       print("end decelerating")
+        
+        let c:CollectionViewCell = completelyVisibleCell(scrollView as! CollectionView)
+       print("end decelerating\(c.country?.name)")
+        setObserver(scrollView as! CollectionView)
+        setObserver(oppositeView(scrollView as! CollectionView))
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
