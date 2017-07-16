@@ -10,6 +10,7 @@ import UIKit
 
 class CollectionView: UICollectionView {
     @IBInspectable var type: String? = ""
+    var countries:[Country] = []
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -26,6 +27,13 @@ class CollectionView: UICollectionView {
     
     func isLocal() -> Bool {
         return type == "local"
+    }
+    
+    
+    func currentCell() -> CollectionViewCell {
+        return self.visibleCells.filter {
+            self.bounds.contains($0.frame)
+            }.first as! CollectionViewCell
     }
     
     

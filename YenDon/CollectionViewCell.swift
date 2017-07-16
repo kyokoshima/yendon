@@ -32,10 +32,21 @@ class CollectionViewCell: UICollectionViewCell {
         self.textAmount.text = amount.description
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print(keyPath)
-        print(object)
-        print(change)
+    func setAmountText(_ amount:Double) {
+        let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
+        self.textAmount.text = (amount * rate!.amount).description
     }
+    
+
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        print(keyPath)
+//        print(object)
+        let amount = change?[.newKey] as! Double
+        self.setAmountText(amount)
+        
+    }
+    
+    
     
 }

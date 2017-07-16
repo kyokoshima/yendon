@@ -19,6 +19,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        overseasCollectionView.countries = overseaCountries
+        localCollectionView.countries = localCountries
         overseasCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         localCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         
@@ -29,6 +31,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isReadyToShow() {
+        
+            setObserver(localCollectionView)
+            setObserver(overseasCollectionView)
+        }
+    }
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,36 +56,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cv:CollectionView = collectionView as! CollectionView
 
         let oppositeView:CollectionView = self.oppositeView(cv)
-        let pairCountries = self.pairCountries(cv)
-        let countries = self.currentCountries(cv)
-//        // CollectionViewの判定
-//                if cv.isOversea() {
-////            countries = overseaCountries
-////            pairCountries = localCountries
-////            panReconizer = overseaPanReconizer
-////            oppositeView = localCollectionView
-//        } else {
-////            countries = localCountries
-////            panReconizer = localPanReconizer
-////            pairCountries = overseaCountries
-////            oppositeView = overseasCollectionView
-//        }
-        let country = countries[indexPath.row]
+//        let pairCountries = self.pairCountries(cv)
+//        let countries = self.currentCountries(cv)
+
+        let country = cv.countries[indexPath.row]
         var pairCountry:Country?
         if ((oppositeView.visibleCells.count) > 0) {
             let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
             if (oppositeIndexPath?.count)! > 0 {
-                pairCountry = pairCountries[(oppositeIndexPath?.row)!]
+                pairCountry = oppositeView.countries[(oppositeIndexPath?.row)!]
 //                print("opposite \(pairCountry)")
+                // 最初だけ付ける
+//                self.setObserver(cv)
+//                self.setObserver(oppositeView)
             }
         }
         cell.image.image = country.image
-//        cell.labelRate.text = country?.rates.first?.amount.description
-//        cell.countryName = country.name
         cell.country = country
         cell.pairCountry = pairCountry
-//        print("country: \(country) pair: \(pairCountry)")
-//        print("\(cv.type)")
+
         
         cell.setRate((country.rates.first?.amountFromPair())!)
         cell.tag = indexPath.row
@@ -86,7 +84,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if (cell.textAmount.text?.isEmpty)! {
             cell.textAmount.text = country.minimumAmount.description
         }
-        
         return cell
     }
     
@@ -119,10 +116,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let c:CollectionViewCell = cell as! CollectionViewCell
 //        c.ind.startAnimating()
-//        print("willセル\(c.country?.name)")
+        print("willセル\(String(describing: c.country?.name))")
+//        if self.isReadyToShow() {
+//            setObserver(collectionView as! CollectionView)
+//            setObserver(oppositeView(collectionView as! CollectionView))
+//        }
     }
     
-
+    func isReadyToShow() -> Bool {
+        return localCollectionView.visibleCells.count > 0 && overseasCollectionView.visibleCells.count > 0
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        print("viewDidScroll")
@@ -130,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let c:CollectionViewCell = cell as! CollectionViewCell
-//        print("didセル\(c.country?.name) last\(lastSelectedCell?.tag)")
+        print("didセル\(c.country?.name) last\(lastSelectedCell?.tag)")
         if lastSelectedCell != cell {
 //            swapReconizer(cell: cell as! CollectionViewCell)
         }
@@ -144,18 +147,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     private func setObserver(_ collectionView: CollectionView) {
-        let currentCell = completelyVisibleCell(collectionView)
-        print("perfect !: \(currentCell)")
-        let oppositeCell = completelyVisibleCell(oppositeView(collectionView))
-        currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
-        oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+        if let currentCell:CollectionViewCell = collectionView.currentCell() {
+            print("perfect !: \(currentCell)")
+            let oppositeCell = oppositeView(collectionView).currentCell()
+            currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+            oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+        } else {
+            print("couldn't set observer")
+        }
     }
     
-    private func completelyVisibleCell(_ collectionView: UICollectionView) -> CollectionViewCell {
-        return collectionView.visibleCells.filter {
-            collectionView.bounds.contains($0.frame)
-        }.first as! CollectionViewCell
-    }
+//    private func completelyVisibleCell(_ collectionView: UICollectionView) -> CollectionViewCell {
+//        return collectionView.visibleCells.filter {
+//            collectionView.bounds.contains($0.frame)
+//        }.first as! CollectionViewCell
+//    }
     // FlowLayoutの
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize: CGFloat = self.view.frame.size.width
@@ -175,7 +181,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         let v:UICollectionView = scrollView as! UICollectionView
         let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
-    
+        
         print("begin decelerating", c.tag)
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -190,10 +196,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var lastSelectedCell:CollectionViewCell?
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let c:CollectionViewCell = completelyVisibleCell(scrollView as! CollectionView)
-       print("end decelerating\(c.country?.name)")
-        setObserver(scrollView as! CollectionView)
-        setObserver(oppositeView(scrollView as! CollectionView))
+//        let c:CollectionViewCell = completelyVisibleCell(scrollView as! CollectionView)
+//       print("end decelerating\(c.country?.name)")
+//        setObserver(scrollView as! CollectionView)
+//        setObserver(oppositeView(scrollView as! CollectionView))
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
