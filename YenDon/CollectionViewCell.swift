@@ -34,7 +34,10 @@ class CollectionViewCell: UICollectionViewCell {
     
     func setAmountText(_ amount:Double) {
         let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
-        self.textAmount.text = (amount * rate!.amount).description
+        let numberOfPlaces = country?.minimumDigit
+        let multiplier = pow(10.0, numberOfPlaces!)
+        let rounded = round((amount * rate!.amount) * multiplier) / multiplier
+        self.textAmount.text = rounded.description
     }
     
 

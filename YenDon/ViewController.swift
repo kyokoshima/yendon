@@ -33,7 +33,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     override func viewDidAppear(_ animated: Bool) {
         if self.isReadyToShow() {
-        
+            let localCell = localCollectionView.currentCell()
+            let overseasCell = overseasCollectionView.currentCell()
+            localCell.country = localCountries.first
+            localCell.pairCountry = overseaCountries.first
+            overseasCell.country = overseaCountries.first
+            overseasCell.pairCountry = localCountries.first
             setObserver(localCollectionView)
             setObserver(overseasCollectionView)
         }

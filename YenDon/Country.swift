@@ -18,6 +18,7 @@ class Country: Object {
     dynamic private var imageData: Data? = nil
     dynamic var symbol = ""
     dynamic var minimumAmount: Double = 1.0
+    dynamic var minimumDigit = 2.0
     let rates = List<Rate>()
     dynamic var image: UIImage? {
         set{
@@ -44,7 +45,7 @@ class Country: Object {
     }
     
     static func updateFromApi(_ finished: @escaping () -> Void) {
-        let countries = loadAll()
+//        let countries = loadAll()
         // レートの最新レコードが今日より新しければ作成
         let latestRateDate = Rate.latestDate()
         if Date().isAfter(date: latestRateDate, granularity: .day) {
@@ -93,12 +94,13 @@ class Country: Object {
         return [find(Const.VND)!]
     }
     
-    static func create(_ name: String, image:UIImage, symbol: String, minAmount: Double) -> Country {
+    static func create(_ name: String, image:UIImage, symbol: String, minAmount: Double, minDigit: Double) -> Country {
         let country = Country()
         country.image = image
         country.name = name
         country.symbol = symbol
         country.minimumAmount = minAmount
+        country.minimumDigit = minDigit
         return country
     }
     
