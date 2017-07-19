@@ -33,14 +33,33 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setAmountText(_ amount:Double) {
-        let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
-        let numberOfPlaces = country?.minimumDigit
-        let multiplier = pow(10.0, numberOfPlaces!)
-        let rounded = round((amount * rate!.amount) * multiplier) / multiplier
-        self.textAmount.text = rounded.description
+        if pairCountry != nil {
+            let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
+            let numberOfPlaces = country?.minimumDigit
+            let realAmount = round(amount * rate!.amount)
+            if numberOfPlaces == 0 {
+                self.textAmount.text = toSuitableAmountForDigit(amount).description
+                
+            } else {
+                let multiplier = pow(10.0, numberOfPlaces!)
+                self.textAmount.text = toSuitableAmountForDigit(((realAmount * multiplier) / multiplier)).description
+            }
+        } else {
+            
+            self.textAmount.text = country?.minimumAmount.description
+        }
     }
     
 
+    private func toSuitableAmountForDigit(_ amount:Double) -> NSNumber {
+        let numberOfPlaces = country?.minimumDigit
+        if (numberOfPlaces == 0) {
+            return NSNumber(value: Int(amount))
+        } else {
+            let multiplier = pow(10.0, numberOfPlaces!)
+            return NSNumber(value: (amount * multiplier) / multiplier)
+        }
+    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 //        print(keyPath)

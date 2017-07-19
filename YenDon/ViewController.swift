@@ -87,7 +87,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.textAmount.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(reconizer:))))
         cell.textAmount.delegate = self
         if (cell.textAmount.text?.isEmpty)! {
-            cell.textAmount.text = country.minimumAmount.description
+//            cell.textAmount.text = country.minimumAmount.description
+            cell.setAmountText(-1)
+            
         }
         return cell
     }
