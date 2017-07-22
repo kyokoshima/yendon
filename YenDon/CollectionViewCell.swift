@@ -23,30 +23,39 @@ class CollectionViewCell: UICollectionViewCell {
         labelRate.text = "\(symbol)1 = \(rateString)"
     }
     
+    func putAmount(_ amount: Double) {
+        self.amount = amount
+        self.textAmount.text = toSuitableAmountForDigit(amount).description
+
+    }
+    
     func setAmount(_ amount:Double, pair: Country) {
-        let rate = country?.rates.filter("pairCurrency = %@", pair.name).sorted(byKeyPath: "updated", ascending: false).first
+//        let rate = country?.rates.filter("pairCurrency = %@", pair.name).sorted(byKeyPath: "updated", ascending: false).first
 //        print("amount: \(amount), pair: \(rate?.amount)")
 //        let localAmount = amount * (rate?.amount)!
 //        self.textAmount.text = localAmount.description
         self.amount = amount
-        self.textAmount.text = amount.description
+        self.textAmount.text = toSuitableAmountForDigit(amount).description
     }
+    
     
     func setAmountText(_ amount:Double) {
         if pairCountry != nil {
-            let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
-            let numberOfPlaces = country?.minimumDigit
-            let realAmount = round(amount * rate!.amount)
-            if numberOfPlaces == 0 {
-                self.textAmount.text = toSuitableAmountForDigit(amount).description
-                
-            } else {
-                let multiplier = pow(10.0, numberOfPlaces!)
-                self.textAmount.text = toSuitableAmountForDigit(((realAmount * multiplier) / multiplier)).description
-            }
+//            let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
+//            let numberOfPlaces = country?.minimumDigit
+            let rate = country?.pairCurrencyRate(pairCountry!)
+            let realAmount = round(amount * rate!)
+//            if numberOfPlaces == 0 {
+//                self.textAmount.text = toSuitableAmountForDigit(realAmount).description
+//                
+//            } else {
+//                let multiplier = pow(10.0, numberOfPlaces!)
+//                self.textAmount.text = toSuitableAmountForDigit(((realAmount * multiplier) / multiplier)).description
+//            }
+            self.textAmount.text = toSuitableAmountForDigit(realAmount).description
         } else {
-            
-            self.textAmount.text = country?.minimumAmount.description
+            let minAmount = country?.minimumAmount
+            self.textAmount.text = toSuitableAmountForDigit(minAmount!).description
         }
     }
     

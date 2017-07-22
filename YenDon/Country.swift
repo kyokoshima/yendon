@@ -44,6 +44,11 @@ class Country: Object {
         return "name"
     }
     
+    func pairCurrencyRate(_ pair: Country) -> Double {
+        let rate = rates.filter("pairCurrency = %@", pair.name).sorted(byKeyPath: "updated", ascending: true).first
+        return rate!.amount
+    }
+    
     static func updateFromApi(_ finished: @escaping () -> Void) {
 //        let countries = loadAll()
         // レートの最新レコードが今日より新しければ作成

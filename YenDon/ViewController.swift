@@ -60,25 +60,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        var pairCountries: [Country]!
         let cv:CollectionView = collectionView as! CollectionView
 
-        let oppositeView:CollectionView = self.oppositeView(cv)
+//        let oppositeView:CollectionView = self.oppositeView(cv)
 //        let pairCountries = self.pairCountries(cv)
 //        let countries = self.currentCountries(cv)
 
         let country = cv.countries[indexPath.row]
-        var pairCountry:Country?
-        if ((oppositeView.visibleCells.count) > 0) {
-            let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
-            if (oppositeIndexPath?.count)! > 0 {
-                pairCountry = oppositeView.countries[(oppositeIndexPath?.row)!]
-//                print("opposite \(pairCountry)")
-                // 最初だけ付ける
-//                self.setObserver(cv)
-//                self.setObserver(oppositeView)
-            }
-        }
+//        var pairCountry:Country?
+//        if ((oppositeView.visibleCells.count) > 0) {
+//            let oppositeIndexPath = oppositeView.indexPath(for: (oppositeView.visibleCells[0]))
+//            if (oppositeIndexPath?.count)! > 0 {
+//                pairCountry = oppositeView.countries[(oppositeIndexPath?.row)!]
+////                print("opposite \(pairCountry)")
+//                // 最初だけ付ける
+////                self.setObserver(cv)
+////                self.setObserver(oppositeView)
+//            }
+//        }
+//        print("#################### \(pairCountry)")
         cell.image.image = country.image
         cell.country = country
-        cell.pairCountry = pairCountry
+//        cell.pairCountry = pairCountry
 
         
         cell.setRate((country.rates.first?.amountFromPair())!)
@@ -88,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.textAmount.delegate = self
         if (cell.textAmount.text?.isEmpty)! {
 //            cell.textAmount.text = country.minimumAmount.description
-            cell.setAmountText(-1)
+            cell.setAmountText(1)
             
         }
         return cell
@@ -128,6 +129,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //            setObserver(collectionView as! CollectionView)
 //            setObserver(oppositeView(collectionView as! CollectionView))
 //        }
+
     }
     
     func isReadyToShow() -> Bool {
@@ -225,7 +227,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 let country = cell.country
                 let pairCountry = self.pairCountry(cell.superview as! CollectionView)
                 let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!)
-                cell.setAmount(toBeAmount, pair: pairCountry)
+                cell.putAmount(toBeAmount)
+                
+//                cell.setAmount(toBeAmount, pair: pairCountry)
+//                cell.setAmountText(toBeAmount)
                 //                print(cell)
                 //                let country = cell.country
                 //                let pairCountry = cell.pairCountry
