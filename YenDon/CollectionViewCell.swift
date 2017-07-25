@@ -40,6 +40,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     
     func setAmountText(_ amount:Double) {
+        var finalAmount:NSNumber
         if pairCountry != nil {
 //            let rate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).sorted(byKeyPath: "updated", ascending: true).first
 //            let numberOfPlaces = country?.minimumDigit
@@ -52,11 +53,17 @@ class CollectionViewCell: UICollectionViewCell {
 //                let multiplier = pow(10.0, numberOfPlaces!)
 //                self.textAmount.text = toSuitableAmountForDigit(((realAmount * multiplier) / multiplier)).description
 //            }
-            self.textAmount.text = toSuitableAmountForDigit(realAmount).description
+            finalAmount = toSuitableAmountForDigit(realAmount)
         } else {
             let minAmount = country?.minimumAmount
-            self.textAmount.text = toSuitableAmountForDigit(minAmount!).description
+            finalAmount = toSuitableAmountForDigit(minAmount!)
         }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = country?.symbol
+        formatter.groupingSize = 3
+        formatter.currencyCode = country?.name
+        self.textAmount.text = formatter.string(from: finalAmount)
     }
     
 

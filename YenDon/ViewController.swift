@@ -39,8 +39,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             localCell.pairCountry = overseaCountries.first
             overseasCell.country = overseaCountries.first
             overseasCell.pairCountry = localCountries.first
-            setObserver(localCollectionView)
-            setObserver(overseasCollectionView)
+//            setObserver(localCollectionView)
+//            setObserver(overseasCollectionView)
+            setObserver(localCell, pairCell: overseasCell)
         }
     }
 
@@ -125,10 +126,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let c:CollectionViewCell = cell as! CollectionViewCell
 //        c.ind.startAnimating()
         print("willセル\(String(describing: c.country?.name))")
-//        if self.isReadyToShow() {
+        if self.isReadyToShow() {
 //            setObserver(collectionView as! CollectionView)
 //            setObserver(oppositeView(collectionView as! CollectionView))
-//        }
+            let currentCell = c
+            let pairCell = (oppositeView(collectionView as! CollectionView)).currentCell()
+            setObserver(currentCell, pairCell: pairCell)
+        }
 
     }
     
@@ -155,16 +159,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
-    private func setObserver(_ collectionView: CollectionView) {
-        if let currentCell:CollectionViewCell = collectionView.currentCell() {
-            print("perfect !: \(currentCell)")
-            let oppositeCell = oppositeView(collectionView).currentCell()
-            currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
-            oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
-        } else {
-            print("couldn't set observer")
-        }
+    // cellを引数にしないとダメ
+    
+    private func setObserver(_ cell:CollectionViewCell, pairCell:CollectionViewCell) {
+        cell.addObserver(pairCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+        pairCell.addObserver(cell, forKeyPath: "amount", options: [.new, .old], context: nil)
+//        [localCollectionView, overseasCollectionView].forEach { (cv) in
+//            if let currentCell:CollectionViewCell = cv?.currentCell() {
+//                print("perfect !: \(currentCell)")
+//                let oppositeCell = oppositeView(cv!).currentCell()
+//                currentCell.addObserver(oppositeCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+//                oppositeCell.addObserver(currentCell, forKeyPath: "amount", options: [.new, .old], context: nil)
+//            } else {
+//                print("couldn't set observer")
+//            }
+//
+//        }
     }
+    
+//    private func removeObserver(_ collectionView:CollectionView) {
+//        collectionView.currentCell().removeObserver(nil, forKeyPath: "amount", context: nil)
+//    }
     
 //    private func completelyVisibleCell(_ collectionView: UICollectionView) -> CollectionViewCell {
 //        return collectionView.visibleCells.filter {
@@ -222,37 +237,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 let point = reconizer.translation(in: self.view)
                 //                print(point.y)
                 let pointY = Int(point.y) * -1
-                let amount = Double(tf.text!)
+                let amountText = tf.text
+                let formatter = NumberFormatter()
                 let cell:CollectionViewCell = reconizer.view?.superview as! CollectionViewCell
                 let country = cell.country
+                
+                formatter.numberStyle = .currency
+                formatter.currencySymbol = country?.symbol
+                let number = formatter.number(from: amountText!)
+                var amount:Double?
+                if number  == nil {
+                    amount = Double(amountText!)!
+                } else {
+                    amount = Double(number!)
+                }
                 let pairCountry = self.pairCountry(cell.superview as! CollectionView)
                 let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!)
                 cell.putAmount(toBeAmount)
                 
-//                cell.setAmount(toBeAmount, pair: pairCountry)
-//                cell.setAmountText(toBeAmount)
-                //                print(cell)
-                //                let country = cell.country
-                //                let pairCountry = cell.pairCountry
-                //                let pairRate = country?.rates.filter("pairCurrency = %@", pairCountry?.name).first
-//                let toBeAmount = Utils.calcAmount(amount!, moved: pointY, min: (country?.minimumAmount)!)
-                //                syncAmount(amount: toBeAmount, pairRate: (pairRate?.amount)!)
             }
         }
-        //        let velocity = reconizer.velocity(in: self.view)
-        //        print(velocity)
-        //        let distance = lastPointY - Double(point.y)
-        //        print(distance)
-        //        let pointY = Double(point.y)
-        //        print("last:\(lastPointY) current:\(pointY) abs:\(abs(lastPointY - pointY))")
-        ////        if (abs(pointY - lastPointY) > 10) {
-        //            if let tf:UITextField = reconizer.view as? UITextField {
-        //                let amount = Utils.calcAmount(NSDecimalNumber(string: tf.text), moveLength: distance).description
-        //                syncAmount(amount: amount)
-        //                            lastPointY = pointY
-        //            }
-        //
-        ////        }
         
         
     }
@@ -272,37 +276,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
 
-    
-//    private func swapReconizer(cell: CollectionViewCell) {
-//        if cell.superview != lastSelectedCell?.superview {
-//            return
-//        }
-//        
-//        let v:UICollectionView = cell.superview as! UICollectionView
-//        let c:CollectionViewCell = v.visibleCells[0] as! CollectionViewCell
-//        
-//        // if selected same as before, nothing to do
-////        print("\(c.tag), \(lastSelectedCell?.tag)")
-//        if c == lastSelectedCell {
-//            return
-//        }
-//        
-//        var panReconizer:UIPanGestureRecognizer?
-//        if v == overseasCollectionView {
-//            panReconizer = self.overseaPanReconizer
-//        } else {
-//            panReconizer = localPanReconizer
-//        }
-//        
-//        
-//        print("end decelerating", c.tag)
-//        if lastSelectedCell != c {
-//            c.textAmount.delegate = self
-//            c.textAmount.addGestureRecognizer(panReconizer!)
-//            lastSelectedCell?.textAmount.removeGestureRecognizer(panReconizer!)
-//        }
-////        lastSelectedCell = c
-//    }
 }
 
 extension ViewController: UITextFieldDelegate {

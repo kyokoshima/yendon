@@ -31,9 +31,14 @@ class CollectionView: UICollectionView {
     
     
     func currentCell() -> CollectionViewCell {
+        let cells = self.visibleCells
+        if cells.count == 1 {
+            return cells[0] as! CollectionViewCell
+        } else {
         return self.visibleCells.filter {
             self.bounds.contains($0.frame)
             }.first as! CollectionViewCell
+        }
     }
     
     
